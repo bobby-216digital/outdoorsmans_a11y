@@ -185,11 +185,14 @@ window.hj('identify', userId, {
 
 {% include 'analyzify-gtm-body' %}
 
+<style>
+#customer_register_link, [data-login-toggle] {
+  text-decoration: underline !important;
+}
+</style>
 
-{% render 'digismoothie-giftbox' %}
 
 </head>
-
 
 
   
@@ -263,6 +266,17 @@ window.hj('identify', userId, {
       defer
     >
     </script>
+<script>
+  setTimeout(() => {
+    let jdgmHidden = document.querySelectorAll(".jdgm-random-link");
+    if (jdgmHidden) {
+      for (let i = 0; i < jdgmHidden.length; i++) {
+        jdgmHidden[i].setAttribute("title", "JudgeMe Hidden Link")
+      }
+    }
+  }, 750);
+    
+  </script>
   <style type="text/css">
     body, html {
       width: 100% !important;
