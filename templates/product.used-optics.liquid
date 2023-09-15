@@ -1,0 +1,133 @@
+{% render 'preorder-now-collection-item', product: product %}
+        {% render 'shogun-products', content: product %}
+{{product.metafields.shogun.above}}
+{% render 'breadcrumbs' %}
+
+{% section 'static-product' %}
+
+<section class="dont-worry">
+  <div class="od-container">
+    
+    <div>
+      <p class="callout-text">At Outdoorsmans, we believe that buying used products should be just as satisfying and worry-free as buying new ones.</p>
+      <p>That's why we offer a 3-day return window for all of our used binoculars, spotting scopes, rifle scopes, tripods, and tripod accessories.</p>
+      <p>We want you to feel confident and reassured when you make a purchase from us, knowing that you have plenty of time to inspect the item and make sure it meets your expectations. And if for any reason it doesn't, simply return it to us within 3 days of receiving the item for a full refund, no questions asked!</p>
+      <p>So go ahead and shop with peace of mind, knowing that we've got your back.</p>
+    </div>
+    
+    <div class="testimonial">
+      <p class="testimonial-text">"Loved the whole process. Your staff is knowledgeable and very helpful. Shipping was fast. Price was fair. Spotting scope was in even better shape than I expected. Great program."</p>
+      <p class="testimonial-author">- Scott B.</p>
+    </div>
+    
+  </div>
+</section>
+
+<section class="clyde-protection" style="background: black url(https://cdn.shopify.com/s/files/1/0799/0299/files/used-optics-bg-2.jpg?v=1684434173); background-size: cover;">
+  <div class="od-container">
+    <div></div>
+    <div>
+      <img style="max-width: 200px;" src="https://cdn.shopify.com/s/files/1/0799/0299/files/clyde.png?v=1684438749" />
+      <h2 style="margin-bottom: 0;">Protect Your Used Optic for up to 3 years.</h2>
+      <p style="margin-top: 0;">Every single used optic is eligible for a no-questions-asked warranty through Clyde protection.</p>
+      <h3>What's Covered:</h3>
+      <p><b>Accidental Damage</b>Product failure caused by drops or spills</p>
+      <p><b>Normal Wear and Tear</b>Mechanical and electrical breakdowns caused by normal use of product</p>
+      <p><b>Repairs</b>Hassle-free online claims experience with repair completed by a best-in-class nationwide service network</p>
+    </div>
+  </div>
+</section>
+
+
+
+{{product.metafields.shogun.below}}
+
+
+<style>
+  
+  .od-container {
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+
+  .dont-worry {
+    margin-top: 75px;
+    padding: 75px 20px;
+    border-top: 1px solid #cccccc;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 28px;
+  }
+
+
+  .testimonial-text {
+    font-size: 32px;
+    font-family: "Bureau Grot Cond Bd", sans-serif!important;
+    text-transform: uppercase;
+    line-height: 47px;
+    text-align: center;
+    color: #cc0000;
+  }
+
+  .testimonial-author {
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .callout-text {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .clyde-protection {
+    padding: 75px 20px;
+    color: white;
+  }
+
+  .clyde-protection h2,
+  .clyde-protection h3 {
+    color: white;
+    text-transform: uppercase;
+    max-width: 450px;
+  }
+
+  .clyde-protection h3 {
+    font-size: 20px;
+  }
+
+  .clyde-protection b {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .clyde-protection p {
+    max-width: 450px;
+    line-height: 28px;
+  }
+
+  @media screen and (min-width: 767px) {
+    .dont-worry div {
+      padding: 0 25px;
+    }
+    
+    .dont-worry .od-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr;
+      grid-column-gap: 0px;
+      grid-row-gap: 0px;
+    }
+  
+    .clyde-protection .od-container{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr;
+      grid-column-gap: 20px;
+      grid-row-gap: 0px;
+    }
+}
+  
+</style>

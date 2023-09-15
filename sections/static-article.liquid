@@ -1,0 +1,317 @@
+<script
+  type="application/json"
+  data-section-type="static-article"
+  data-section-id="{{ section.id }}">
+</script>
+
+{% assign has_share = false %}
+{% if section.settings.use_share_buttons %}
+  {% assign has_share = true %}
+{% endif %}
+
+{%- capture share_buttons -%}
+  {% assign social_image = false %}
+  {% if article.image %}
+    {% assign social_image = article.image | img_url: '1024x' %}
+  {% endif %}
+  {% assign social_url = shop.url | append: article.url %}
+  {%-
+    render 'share-buttons',
+    snippet_title: 'general.share_buttons.title_short',
+    social_image: social_image,
+    social_title: article.title,
+    social_url: social_url
+  -%}
+{%- endcapture  -%}
+
+<section class="article--outer">
+  {% if article.image %}
+    <figure
+      class="article-image"
+      {%
+        render 'rimg',
+        img: article.image,
+        size: 'master',
+        lazy: true,
+        crop: 'center',
+        background: true
+      %}
+    >
+      {%
+        render 'rimg',
+        img: article.image,
+        size: 'master',
+        crop: 'center',
+        lazy: true,
+        canvas: true
+      %}
+    </figure>
+  {% endif %}
+
+  <div class="article--container">
+
+    {% if has_share %}
+      <div class="article--sidebar">
+        {{- share_buttons -}}
+      </div>
+    {% endif %}
+
+    <div class="article--inner">
+      {% if section.settings.show_date or section.settings.show_author %}
+        <div class="article--meta">
+          {% if section.settings.show_date %}
+            <span class="article--meta-item">
+              {{ article.published_at | date: format: 'month_day_year' }}
+            </span>
+          {% endif %}
+
+          {% if section.settings.show_author %}
+            <span class="article--meta-item">
+              {{ article.author }}
+            </span>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <h1 class="article--title">
+        {{ article.title }}
+      </h1>
+
+      <div class="article--content rte">
+        {{ article.content }}
+      </div>
+
+      
+
+      {% if has_share %}
+        <div class="article--share-buttons">
+          {{- share_buttons -}}
+        </div>
+      {% endif %}
+
+      
+      {% for tag in article.tags -%}
+        
+        {% if tag contains 'rifles' %}
+          <div style="margin:25px auto;" class="pxFormGenerator riflescope-form" id="g4euItRJ71Lbf8KzxDezZQ"></div>
+        {% endif %}
+
+        {% if tag contains 'tripods' %}
+          <div style="margin:25px auto;" class="pxFormGenerator" id="prU2L-mayEc96fCiZxjhbw"></div>
+        {% endif %}
+
+        {% if tag contains 'spotting scopes' %}
+          <div style="margin:25px auto;" class="pxFormGenerator" id="nK7NGR6VZDHmYM0PcJfcaw"></div>
+        {% endif %}
+
+        {% if tag contains 'binoculars' %}
+          <div style="margin:25px auto;" class="pxFormGenerator" id="kJSbyA-y6UQialdOz_UNUw"></div>
+        {% endif %}
+      {%- endfor %}
+
+      
+	 {% if article.tags != blank %}
+        <div class="article--tags">
+          <span class="article--tags-title">{{- 'blog.article.filed_in' | t -}}</span>
+          {% for tag in article.tags %}
+            {{ tag | link_to_tag: tag }}{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        </div>
+      {% endif %}
+      {% if blog.next_article or blog.previous_article %}
+        <div class="article--pagination">
+          {% assign current_found = false %}
+          {% assign done = false %}
+          {% for a in blog.articles %}
+            {% if current_found and done == false %}
+              {% assign next_article = a %}
+              {% assign done = true %}
+            {% endif %}
+
+            {% unless done %}
+              {% if a.id == article.id %}
+                {% assign current_found = true %}
+              {% else %}
+                {% assign prev_article = a %}
+              {% endif %}
+            {% endunless %}
+          {% endfor %}
+
+          {% if prev_article %}
+            <div class="article--pagination-item-left">
+              <a href="{{ prev_article.url }}">
+                <span class="article--pagination-chevron-left" aria-hidden="true">
+                  {% render 'icon-chevron-down-small' %}
+                </span>
+                <span class="article--pagination-text">
+                  {{ 'blog.article.previous_article' | t }}
+                  <span class="article--pagination-title">
+                    {{ prev_article.title | escape }}
+                  </span>
+                </span>
+              </a>
+            </div>
+          {% endif %}
+
+          {% if next_article %}
+            <div class="article--pagination-item-right">
+              <a href="{{ next_article.url }}">
+                <span class="article--pagination-text">
+                  {{ 'blog.article.next_article' | t }}
+                  <span class="article--pagination-title">
+                    {{ next_article.title | escape }}
+                  </span>
+                </span>
+                <span class="article--pagination-chevron-right" aria-hidden="true">
+                  {% render 'icon-chevron-down-small' %}
+                </span>
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% render 'article-comments', comment: comment %}
+      
+
+    </div>
+    
+    <div class="article-sidebar">
+      
+      {% assign productMetafields = all_products[article.metafields.custom.featured_product] %}
+      
+      {% for tag in article.tags -%}
+        {% if tag contains 'tripods' %}
+      		<div class="sidebar-block">
+      
+              <div class="compare-sidebar" style="border: 0;">
+                <h2>Tripod Comparison Chart</h2>
+                <p>Compare tripods in one easy interactive chart.</p>
+                <a href="#compare-models" style="padding: 12px;">Go to Chart</a>
+              </div>
+
+              <div id="bc-sf-filter-tree2"></div>
+
+            </div>
+      	{% endif %}
+      {%- endfor %}
+      
+      {% if productMetafields != blank %}
+        <div class="sidebar-block" style="padding: 20px;">
+
+
+          <p style="font-weight: bold; font-size: 18px; line-height: 22px;">Based on this article you should check out:</p>
+
+          {% for image in productMetafields.images  limit:1 %}
+            <a href="{{ productMetafields.url }}">
+              <img src="{{ image.src | product_img_url: 'medium' }}" />
+            </a>
+          {% endfor %}
+
+          <h3 style="text-align: center;"> {{ productMetafields.title }}</h3>
+          <a class="button" href="{{ productMetafields.url }}">Learn More</a>
+
+        </div>
+	  {% endif %}
+      
+      {% for tag in article.tags -%}
+        {% if tag contains 'rifles' %}
+      		<div class="sidebar-block">
+              <a href="https://outdoorsmans.com/collections/outdoorsmans-short-action-rifle-chassis">
+                 <img style="width: 100%" src="https://mcusercontent.com/fc29171d53be71a8fe10387e1/images/6b1ec98e-225c-46ef-8f65-9d261363b7da.gif"/>
+              </a>
+            </div>
+      	{% endif %}
+      {%- endfor %}
+      
+      
+      
+   
+      
+      <div class="sidebar-block binocular-adapter">
+        <a href="https://outdoorsmans.com/collections/studs-adapters/products/outdoorsmans-binocular-adapter">
+          <video id="tripod-video" draggable="false" muted="" autoplay="" playsinline="" loop="" style="width: 100%; height: 100%;object-fit:fill;"><source autoplay="" muted="" type="video/mp4" src="https://imgur.com/VOnrejs.mp4"></video>
+        </a>
+        <h3>The World's Best Binocular Adapter</h3>
+        <a class="button" href="https://outdoorsmans.com/collections/studs-adapters/products/outdoorsmans-binocular-adapter">Learn More</a>
+      </div>
+      
+    
+      
+     
+      
+    </div>
+    
+    
+  </div>
+ 
+</section>
+
+
+{% if article.metafields.custom_fields["related_articles"] != blank %}
+  <section>
+    <h2 class="text-center">Posts related to this article</h2>
+    <div class="container" style="max-width: 1400px; margin: 25px auto;">
+      <div class="outdoorsmans-articles custom-field custom-field__related-articles custom-field__type--article-reference">
+          
+          {% assign article_refs = article.metafields.custom_fields["related_articles"] | split: "|" %}
+      
+            {% for article_handle in article_refs %}
+             
+                {% assign article_blog_handle = article_handle | split: "." %}
+          
+                {% for article in blogs[article_blog_handle[0]].articles %}
+          
+                  {% if article.handle contains article_blog_handle[1] %}
+          			<div class="outdoorsmans-article">
+                      <img src="{{ article.image.src | img_url: '400x' }}">
+                      <div class="outdoorsmans-article-copy">
+                       <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
+                       {%- if article.excerpt == blank -%}
+                          <p>{{ article.content | strip_html | truncatewords: 40 }}</p>
+                        {%- else -%}
+                          {{ article.excerpt }}
+                        {%- endif -%}
+                      </div>
+                    </div>
+
+                    {% break %}
+                	
+                  {% endif %}
+                {% endfor %}
+     
+            {% endfor %}
+        
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+
+{% schema %}
+{
+  "name": "Article pages",
+  "class": "article--section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Show date published",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "label": "Show post author",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_share_buttons",
+      "label": "Use share buttons",
+      "default": true
+    }
+  ]
+}
+
+{% endschema %}

@@ -1,0 +1,8 @@
+{% section 'static-article' %}
+
+{% for tag in article.tags -%}
+  {% if tag contains 'tripods' %}
+      {% section 'tripod-comparison' %}
+
+  {% endif %}
+{%- endfor %}

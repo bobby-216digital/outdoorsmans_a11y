@@ -1,0 +1,123 @@
+<link type="text/css" href="{{ 'adapter.css' | asset_url }}" rel="stylesheet">
+
+{{product.metafields.shogun.above}}
+{% render 'breadcrumbs' %}
+
+{% section 'static-product' %}
+
+<section class="the-details" style="margin-top: 75px;">
+  <div style="background: url('https://cdn.shopify.com/s/files/1/0799/0299/files/Western_Hunter_021.jpg?v=1618256829');background-size: cover;background-position: center;"></div>
+  <div>
+    <h2 class="text-white">One Click</h2>
+    <p class="text-white">Imagine a cool morning. The sun peeking over the mountain range in the distance. The distinct sounds of wildlife awakening from all directions.</p>
+    <p class="text-white">Put yourself there and imagine fumbling around with a cumbersome binocular system, or worse, hand holding your optics. Think of the extra noise, time, and movement you may miss while you are struggling to set up.</p>
+    <p class="text-white">Now imagine not missing a single second of that opening scene. The only sound you add to the mix is one click. Imagine that with one click, you are able to enjoy it all and get a closer look at any piece of it. When you're ready to move on to the next ridge, one click is all it takes to get going.</p>
+    <p class="text-white"><b>One click to frustration-free glassing.</b></p>
+  </div>
+</section>
+
+
+<section class="tripod-technical">
+  <div>
+  <video id="tripod-video" draggable="false" muted autoplay playsinline  loop style="width: 100%; height: 100%;object-fit:fill;"><source autoplay muted type="video/mp4" src="https://imgur.com/VOnrejs.mp4"></video>
+  </div>
+
+    <div>
+      <p class="small-red">Outdoorsmans</p>
+      <h2 style="margin-bottom: 0;">Binocular Adapter System</h2>
+      <p style="line-height: 26px;margin-top: 0; margin-bottom: 10px;">The Outdoorsmans Binocular Stud and Adapter System resulted from a common need among western hunters – the need to mount binoculars to a tripod. When our system came to market in the early 00’s, nothing of the sort existed commercially. Since then, the success of our stud &amp; adapter system has been evidenced by dozens of attempts at copying it. There really is no simpler way to set up and dismount binoculars from a tripod – but don’t take it from us.</p>
+      <p style="line-height: 26px;margin-top: 0; margin-bottom: 10px;">A slew of well-known and respected hunters have used our Binocular Stud & Adapter for over a decade. Why are we telling you all of this? Because we want you to know what you’re paying for when you purchase our Binocular Stud and Adapter System. We pride ourselves in customer service, American manufacturing, and innovation, and it’s only possible because of customers like you who understand this and continue to support us each year.</p>  
+    </div>
+  
+</section>
+
+
+<section class="hero-testimonial-adapter" style="position:relative;">
+ 
+  <div class="hero-testimonial-left">
+    <div class="testimonial-container" style="max-width: 600px;margin: 0 auto; padding: 15px;">
+      <h2 class="text-white">Just buy it, you’ll thank me later.</h2>
+      <p class="text-white">"Finally bought this piece after trying other “adapters” and trying to save money. Just buy the right equipment the first time and save the hassle and money. Used this setup that a friend had on a javelina hunt and bought one the next day. Couldn’t be happier with it. Great staff and great product."</p>
+      <p class="text-white"><b>- JG, Verified Buyer></b></p>
+    </div>
+  </div>
+  <div class="hero-testimonial-right">
+  	  {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
+  </div>
+
+</section>
+
+<section class="adapter-comparison">
+  
+  <div class="content">
+    <h2 class="large-text">Tall vs Short Binocular Adapter?</h2>
+    <p>Our Tall Binocular Adapter works best with 56mm objective lenses to allow a full range of adjustment. It also provides an additional inch of vertical length on the glassing setup.</p>
+    <p>The Short Binocular Adapter works nicely with 50mm and smaller objective lenses and can be left attached to the stud for storage inside a bino harness in some cases.</p>
+  </div>
+  
+  <div class="adapter-blocks-container">
+    
+
+    <div class="adapter-block">
+      <img src="https://cdn.shopify.com/s/files/1/0799/0299/files/tall.jpg?v=1618259849">
+      <p class="small-red">Outdoorsmans</p>
+      <h3>Tall Binocular Adapter</h3>
+      <p>
+          <b>Weight:</b> 1.9 oz<br/>
+          <b>Height:</b> 4.5 in<br/>
+      </p>
+      <input type="button" value="Add to cart" onClick="addTripodToCart( {{ all_products['outdoorsmans-binocular-adapter'].variants.first.id }}  )">
+    </div>
+    <div class="adapter-block">
+      <img src="https://cdn.shopify.com/s/files/1/0799/0299/files/short.jpg?v=1618259849">
+      <p class="small-red">Outdoorsmans</p>
+      <h3>Short Binocular Adapter</h3>
+      <p>
+        <b>Weight:</b> 1.7 oz<br/>
+        <b>Height:</b> 3.5 in<br/>
+      </p>
+      <input style="margin-top: 0!important;" type="button" value="Add to cart" onClick="addTripodToCart( {{ all_products['outdoorsmans-binocular-adapter'].variants.first.id }}  )" class="stud_add_to_cart">
+    </div>
+  </div>
+  
+  
+</section>
+
+<!-- <section class="video-section" style="position: relative;">
+  <div class="black-overlay"></div>
+  <h2 class="text-white video-overlay-text">American Made Gear for the Western Hunter</h2>
+  <video draggable="false" muted  autoplay loop  style="width: 100%; height: auto;"><source autoplay muted type="video/mp4" src="https://i.imgur.com/CIT3FiP.mp4"></video>
+</section> -->
+
+<!--{% comment %}Start automatically added Judge.me widget{% endcomment %}
+  {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, product: product %}
+{% comment %}End automatically added Judge.me widget{% endcomment %}-->
+
+
+{% include 'cross-sell' %}
+
+
+
+
+
+
+{{product.metafields.shogun.below}}
+
+
+<script>
+  var addTripodToCart = function(variantID){
+    var id = variantID;
+    $.ajax({
+        type: 'POST', 
+        url: '/cart/add.js',
+        dataType: 'json', 
+        data: {id:id,quantity:1},
+        success: function(){
+              location.href="/cart";
+        }
+     });
+  }
+  
+  document.getElementById("tripod-video").play();
+</script>
+

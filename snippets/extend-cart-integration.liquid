@@ -1,0 +1,89 @@
+<script>
+
+  if (window.Extend && window.ExtendShopify && window.Shopify.currency.active === 'USD') {
+
+    var slice = Array.prototype.slice;
+    var localCart = {{ cart | json }}
+
+    function findAll(element) {
+      var items = document.querySelectorAll(element);
+      return items ? slice.call(items, 0) : [];
+    }
+
+    function createOffers() {
+      findAll('.cart-item').forEach(function(el){
+        var currentOffer = el.querySelector('#extend-cart-offer');
+        var variantId = el.getAttribute('data-cartitem-id');
+        var quantity = el.querySelector('[data-cartitem-quantity]').value;
+        if (currentOffer){
+          currentOffer.setAttribute('data-extend-variant', variantId);
+          currentOffer.setAttribute('data-extend-quantity', quantity);
+        } else {
+          var extendOffer = document.createElement('div');
+          extendOffer.id = 'extend-cart-offer';
+          extendOffer.setAttribute('data-extend-variant', variantId);
+          extendOffer.setAttribute('data-extend-quantity', quantity);
+          el.querySelector('.cart-item--content').appendChild(extendOffer);
+        }
+
+      });
+    }
+
+    function hardRefresh() {
+      location.href = location.hash ? location.href.substring(0, location.href.indexOf('#')) : location.href;
+    }
+
+    function initCartOffer() {
+
+      createOffers();
+      Extend.buttons.destroyAll();
+
+      findAll('#extend-cart-offer').forEach(function(el){
+
+        var variantId = el.getAttribute('data-extend-variant')
+        var quantity = el.getAttribute('data-extend-quantity')
+
+        if(ExtendShopify.warrantyAlreadyInCart(variantId, localCart.items)){
+          return
+        }
+
+        Extend.buttons.renderSimpleOffer(el, {
+          referenceId: variantId,
+          onAddToCart: function (options) {
+            ExtendShopify.addPlanToCart(
+              {
+                plan: options.plan,
+                product: options.product,
+                quantity: quantity,
+              },
+              function (err) {
+                // an error occurred
+                if (err) {
+                  return;
+                } else {
+                  hardRefresh();
+                }
+              }
+            );
+          },
+        });
+      })
+
+      ExtendShopify.normalizeCart({cart: localCart, balance: true}, function (err, data) {
+        if (data && data.updates) {
+          // Effectively hard reloads the page; thus updating the cart 
+          hardRefresh();
+        }
+      });  
+    }
+    initCartOffer()
+
+    window.addEventListener("refreshCart", function () {
+      $.getJSON("/cart.js", function (newCart) {
+        localCart = newCart;
+        initCartOffer();
+      });
+    });
+  }
+
+</script>

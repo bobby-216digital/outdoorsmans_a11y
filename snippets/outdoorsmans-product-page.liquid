@@ -1,0 +1,96 @@
+{% assign backorderVariants = '' %}   
+
+
+
+	{% for variant in product.variants %}
+   
+      {% if variant.inventory_quantity <= 0 and variant.inventory_policy == "continue"  %}
+          {% assign backorderVariants = backorderVariants | append : variant.title | append: ', ' %}
+          <span style="display:none;">{% increment backorderCount %}</span>
+      {% endif %}
+    
+    {% endfor %}
+
+    {% assign backorderVariants = backorderVariants | split: ', ' %}
+
+	{% comment %} Remove the Availablity message on all optics unless specified in custom field below. {% endcomment %} 
+    {% assign optics = "Rifle Scopes, Binoculars, Rangefinder, Spotting Scopes, Eye Piece"%}
+
+	{% comment %} The following vendors should always be set to continue selling. {% endcomment %} 
+	{% assign vendors = "North American Rescue,Rim Country Manufacturing, Wilderness Pack Specialties, Coronado, Hatch, Outdoorsmans, SLIK, Triclawps,  Coronado Machine, Vitec, Hatch Outdoors "%}
+    
+	
+    {% unless optics contains product.type %}
+       {% if vendors contains product.vendor %}
+              {% if backorderCount > 0 %}
+				<p class="availability red"><b>Availability:</b> 
+                    <span>
+
+                          {% if product.has_only_default_variant == true %} 
+                      Back Ordered {% if product.metafields.custom_fields["expected_in_stock_date"] != blank %}	- <b>Expected Restock Date:</b> {{ product.metafields.custom_fields["expected_in_stock_date"] | date: "%B %d" }}{% endif %}
+                          {% else%}
+                              Back Ordered - 
+                            {% for backorder in backorderVariants  %}
+
+                                  {% if forloop.last != true %}
+                                      {{ backorder | append: ', '}}        
+                                    {% else%}
+                                      {{ backorder }}
+                                  {%endif%}	
+
+                            {% endfor %}
+
+                      {% if product.metafields.custom_fields["expected_in_stock_date"] != blank %} - <b>Expected Restock Date:</b> {{ product.metafields.custom_fields["expected_in_stock_date"] | date: "%B %d" }}{% endif %}
+
+                          {% endif %}
+
+
+                    </span>
+                </p>
+                  {% else %}
+                   <p class="availability"><b>Availability:</b> In Stock </p> 
+
+              {% endif%}
+              {% else %}
+           
+     {% endif %}
+
+
+    {% endunless %}
+    
+    
+    
+    {% comment %} This section only for optics  {% endcomment %}
+    
+    
+    {% if optics contains product.type %}
+
+		{% assign count = 0 %}
+
+
+		{% comment %} Check if any variants are in stock {% endcomment %}
+        {% for variant in product.variants %}
+
+          {% if variant.inventory_quantity > 0 %}
+              {% assign count = count | plus: 1 %}   
+          {% endif %}
+
+        {% endfor %}
+		
+        {% comment %} If any variants are in stock - display in stock {% endcomment %}
+		 {% if count > 0 %}
+              <p class="availability"><b>Availability:</b> In Stock</p>
+		  {% else %}
+              <p class="availability"><b>Availability:</b> Call for Availability</p>
+          {% endif %}
+
+    {% endif%}
+
+{% comment %}
+{% if product.metafields.custom_fields["availability"] != blank %}
+<p class="availability">Availability: {{ product.metafields.custom_fields["availability"] }} </p>
+{% else %}
+
+{% endif %}
+
+{% endcomment %}

@@ -1,0 +1,16 @@
+{% render 'preorder-now-collection-item', product: product %}
+        {% render 'shogun-products', content: product %}
+{{product.metafields.shogun.above}}
+{% render 'breadcrumbs' %}
+
+{% section 'static-product' %}
+
+{% include 'cross-sell' %}
+
+{% section 'static-product-recommendations' %}
+
+{% section 'static-recently-viewed' %}
+
+<div class="container" style="max-width: 1400px;margin: 20px auto;"> {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %} </div>
+
+{{product.metafields.shogun.below}}

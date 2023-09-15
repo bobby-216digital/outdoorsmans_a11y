@@ -1,0 +1,193 @@
+{% assign compactWeight = "32 Ounces" %}
+{% assign compactHeightCompressed = "13.5 Inches" %}
+{% assign compactLegsDeployed = "27 Inches" %}
+{% assign compactCenterpostDeployed = "36.5 Inches" %}
+{% assign compactCenterpostExtensionDeployed = "47 Inches" %}
+
+{% assign standardWeight = "44 Ounces" %}
+{% assign standardHeightCompressed = "18.5 Inches" %}
+{% assign standardLegsDeployed = "37 Inches" %}
+{% assign standardCenterpostDeployed = "51.5 Inches" %}
+{% assign standardCenterpostExtensionDeployed = "60.5 Inches" %}
+
+{% assign tallWeight = "49.6 Ounces" %}
+{% assign tallHeightCompressed = "21 Inches" %}
+{% assign tallLegsDeployed = "44 Inches" %}
+{% assign tallCenterpostDeployed = "60.5 Inches" %}
+{% assign tallCenterpostExtensionDeployed = "79.5 Inches" %}
+
+{% render 'shogun-products', content: product %}
+
+{{product.metafields.shogun.above}}
+{% render 'breadcrumbs' %}
+
+{% section 'static-product' %}
+
+<section class="the-details" style="margin-top: 75px;">
+  <div style="background: url('https://cdn.shopify.com/s/files/1/0799/0299/files/DSC04896.jpg?v=1614803641');background-size: cover;background-position: center;"></div>
+  <div>
+    <h2 class="text-white">The Tripod that Won the West</h2>
+    <p class="text-white">No matter how steady you think your hands are, nothing beats the view from a rock solid platform. The Outdoorsmans tripod is the only one built specifically for the demands of western hunting, and has been put to the test all over the world.</p>
+	<ul class="text-white product-details-list">
+      <li><span>100% Billet Aluminum</span>Made of the 6061-T6 aircraft grade billet machined aluminim. Try to break it, we dare you.</li>
+      <li><span>Easy Use Lever Locks</span>Unlocking and deploying your tripod could not be faster - even when those cold temps have your hands wrapped.</li>
+      <li><span>Multiple Height Options</span>Don't compromise on your glassing style. Our tripods come in three sizes that comform to you not the other way around.</li>
+    </ul>
+  </div>
+</section>
+
+
+
+<section class="tripod-technical">
+  <div>
+  <video id="tripod-video" draggable="false" muted autoplay playsinline  loop style="width: 100%; height: 100%;object-fit:fill;"><source autoplay muted type="video/mp4" src="https://i.imgur.com/1vT55bz.mp4"></video>
+  </div>
+  
+  
+  {% if product.handle == 'outdoorsmans-standard-tripod'%}
+    <div>
+      <p class="small-red">Outdoorsmans</p>
+      <h2 style="margin-bottom: 0;">Standard Tripod</h2>
+      <p style="line-height: 22px;margin-top: 0; margin-bottom: 10px;">Strike a balance between ultralight and ultra capable, the Standard Tripod gives a little extra room to glass sitting down, and enough to glass standing up with the optional Centerpost Extension kit.</p>
+      <ul class="product-details-list">
+        <li><span>Weight</span>{{ standardWeight }}</li>
+        <li><span>Height Compressed</span>{{standardHeightCompressed}}</li>
+        <li><span>Legs Deployed</span>{{standardLegsDeployed}}</li>
+        <li><span>Centerpost Deployed</span>{{ standardCenterpostDeployed }}</li>
+        <li><span>Centerpost Extension Deployed (not included)</span> {{standardCenterpostExtensionDeployed}}</li>
+      </ul>
+    </div>
+  {% endif %}
+  
+  {% if product.handle == 'outdoorsmans-compact-medium-tripod'%}
+    <div>
+      <p class="small-red">Outdoorsmans</p>
+      <h2 style="margin-bottom: 0;">Compact Tripod</h2>
+      <p style="line-height: 22px;margin-top: 0; margin-bottom: 10px;">Strike a balance between ultralight and ultra capable, the Standard Tripod gives a little extra room to glass sitting down, and enough to glass standing up with the optional Centerpost Extension kit.</p>
+      <ul class="product-details-list">
+        <li><span>Weight</span>{{ compactWeight }}</li>
+        <li><span>Height Compressed</span>{{compactHeightCompressed}}</li>
+        <li><span>Legs Deployed</span>{{compactLegsDeployed}}</li>
+        <li><span>Centerpost Deployed</span>{{ compactCenterpostDeployed }}</li>
+        <li><span>Centerpost Extension Deployed (not included)</span> {{compactCenterpostExtensionDeployed}}</li>
+      </ul>
+    </div>
+  {% endif %}
+  
+  {% if product.handle == 'outdoorsmans-tall-tripod'%}
+    <div>
+      <p class="small-red">Outdoorsmans</p>
+      <h2 style="margin-bottom: 0;">Tall Tripod</h2>
+      <p style="line-height: 22px;margin-top: 0; margin-bottom: 10px;">Strike a balance between ultralight and ultra capable, the Standard Tripod gives a little extra room to glass sitting down, and enough to glass standing up with the optional Centerpost Extension kit.</p>
+      <ul class="product-details-list">
+        <li><span>Weight</span>{{ tallWeight }}</li>
+        <li><span>Height Compressed</span>{{tallHeightCompressed}}</li>
+        <li><span>Legs Deployed</span>{{tallLegsDeployed}}</li>
+        <li><span>Centerpost Deployed</span>{{ tallCenterpostDeployed }}</li>
+        <li><span>Centerpost Extension Deployed (not included)</span> {{tallCenterpostExtensionDeployed}}</li>
+      </ul>
+    </div>
+  {% endif %}
+  
+</section>
+
+
+
+
+<section class="hero-testimonial" style="position:relative;background: url('https://cdn.shopify.com/s/files/1/0799/0299/files/outdoorsmans-tripod.jpg?v=1614804732'); background-repeat: no-repeat; background-size: cover;">
+  <div class="black-overlay"></div>
+  <div class="hero-testimonial-container">
+    <h2 class="text-white">Versatile</h2>
+    <p class="text-white">"Best tripod I۪’ve ever owned, lightweight, stable, and bomb proof. I۪’ve used it for photos, glassing, time lapses, to prop up a tarp and to defend myself from wolves. On time, every time!"</p>
+    <p class="text-white">- Joshua L.</p>
+  </div>
+</section>
+
+<section class="tripod-comparison">
+  <div>
+    <h2 class="large-text">Which Tripod is for You?</h2>
+    <p>Whether you're miles in the wilderness or a few short yards from the truck, having the right tripod will go a long way towards spotting game.</p>
+    <p>Some folks like to stand and glass while others glass exclusively from a seated position. Luckily, no matter the preference, we've got a tripod for everyone.</p>
+  </div>
+  <div class="tripod-blocks-container">
+    <div class="tripod-block">
+      <img src="https://cdn.shopify.com/s/files/1/0799/0299/files/sillouhette-compact.jpg?v=1614965538">
+      <p class="small-red">Outdoorsmans</p>
+      <h3>Compact Tripod</h3>
+      <p>
+        <b>Weight:</b> {{ compactWeight }}<br/>
+          <b>Height Compressed:</b> {{compactHeightCompressed}}<br/>
+          <b>Legs Deployed:</b> {{compactLegsDeployed}}<br/>
+          <b>Centerpost Deployed:</b> {{ compactCenterpostDeployed }}<br/>
+          <b>Centerpost Extension Deployed:</b> {{compactCenterpostExtensionDeployed}}<br/>
+      </p>
+      <input style="margin-top: 0!important;" type="button" value="Add to cart" onClick="addTripodToCart( {{ all_products['outdoorsmans-compact-medium-tripod'].variants.first.id }}  )" class="stud_add_to_cart">
+    </div>
+
+    <div class="tripod-block">
+      <img src="https://cdn.shopify.com/s/files/1/0799/0299/files/sillouhette-standard.jpg?v=1614965538">
+      <p class="small-red">Outdoorsmans</p>
+      <h3>Standard Tripod</h3>
+      <p>
+        <b>Weight:</b> {{ standardWeight }}<br/>
+          <b>Height Compressed:</b> {{standardHeightCompressed}}<br/>
+          <b>Legs Deployed:</b> {{standardLegsDeployed}}<br/>
+          <b>Centerpost Deployed:</b> {{ standardCenterpostDeployed }}<br/>
+          <b>Centerpost Extension Deployed:</b> {{standardCenterpostExtensionDeployed}}<br/>
+      </p>
+      <input type="button" value="Add to cart" onClick="addTripodToCart( {{ all_products['outdoorsmans-standard-tripod'].variants.first.id }}  )" class="stud_add_to_cart">
+    </div>
+
+    <div class="tripod-block">
+      <img src="https://cdn.shopify.com/s/files/1/0799/0299/files/sillouhette-tall.jpg?v=1614965538">
+      <p class="small-red">Outdoorsmans</p>
+      <h3>Tall Tripod</h3>
+      <p>
+        <b>Weight:</b> {{ tallWeight }}<br/>
+          <b>Height Compressed:</b> {{tallHeightCompressed}}<br/>
+          <b>Legs Deployed:</b> {{tallLegsDeployed}}<br/>
+          <b>Centerpost Deployed:</b> {{ tallCenterpostDeployed }}<br/>
+          <b>Centerpost Extension Deployed:</b> {{tallCenterpostExtensionDeployed}}<br/>
+      </p>
+      <input type="button" value="Add to cart" onClick="addTripodToCart( {{ all_products['outdoorsmans-tall-tripod'].variants.first.id }}  )">
+    </div>
+  </div>
+</section>
+
+{% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
+
+<section class="video-section" style="position: relative;">
+  <div class="black-overlay"></div>
+  <h2 class="text-white video-overlay-text">American Made Gear for the Western Hunter</h2>
+  <video draggable="false" muted  autoplay loop  style="width: 100%; height: auto;"><source autoplay muted type="video/mp4" src="https://i.imgur.com/CIT3FiP.mp4"></video>
+</section>
+
+
+
+{% include 'cross-sell' %}
+
+
+
+
+
+
+{{product.metafields.shogun.below}}
+
+
+<script>
+  var addTripodToCart = function(variantID){
+    var id = variantID;
+    $.ajax({
+        type: 'POST', 
+        url: '/cart/add.js',
+        dataType: 'json', 
+        data: {id:id,quantity:1},
+        success: function(){
+              location.href="/cart";
+        }
+     });
+  }
+  
+  document.getElementById("tripod-video").play();
+</script>
+

@@ -1,0 +1,397 @@
+{% comment %}
+  @param layout {String}
+    Layout type
+
+  @param is_product_modal {Bool}
+    Is the snippet being loaded in a QuickShop
+
+  @param hide_description {Bool}
+    If true, hide the product description
+
+  @param gallery_aspect_ratio {string}
+    This is the gallery aspect ratio, can be one of 'natural', 'short', 'square', 'long'
+
+  @param gallery_thumbnail_position {string}
+    This is the gallery thumbnail position, can be one of 'below', or 'left'
+
+  @param gallery_image_crop {boolean}
+    Whether to crop images
+
+  @param gallery_hover_zoom {String}
+    This is the hover zoom setting, which is either 'disabled', 'separate', or 'replace'
+
+  @param gallery_click_to_zoom {String}
+    This is the click to zoom setting, which is either 'disabled', 'mobile', 'desktop', or 'always'
+{% endcomment %}
+
+{% assign onboarding = onboarding | default: false %}
+{% assign layout = layout | default: nil %}
+{% assign hide_description = hide_description | default: true %}
+
+{% assign enable_social_sharing = settings.product_social_sharing %}
+{% assign selected_variant = product.selected_or_first_available_variant %}
+{% assign compare_at_price = selected_variant.compare_at_price %}
+{% assign price = selected_variant.price %}
+{% assign sku = selected_variant.sku %}
+{% assign product_available = product.available %}
+
+{% comment %}For a potential divider in the product.description we need to split the content{% endcomment %}
+{% assign readmore_split = product.description | split: '<!-- more -->' %}
+
+{% if onboarding %}
+  {% assign compare_at_price = 2999 %}
+  {% assign price = 1999 %}
+{% endif %}
+
+{% assign on_sale = false %}
+{% if compare_at_price > price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% assign consistent_saved = false %}
+{% capture consistent_savings %}
+  {%
+    render 'consistent-savings',
+    variants: product.variants,
+    on_sale: on_sale
+  %}
+{% endcapture %}
+{% if consistent_savings contains 'true' %}
+  {% assign consistent_saved = true %}
+{% endif %}
+
+
+{%- capture share_buttons -%}
+  {% assign social_image = false %}
+  {% if product.featured_image %}
+    {% assign social_image = product.featured_image | img_url: '1024x' %}
+  {% endif %}
+  {% assign social_url = shop.url | append: product.url %}
+  {%-
+    render 'share-buttons',
+    snippet_title: 'general.share_buttons.title',
+    social_image: social_image,
+    social_title: product.title,
+    social_url: social_url
+  -%}
+{%- endcapture  -%}
+
+<article class="product--outer">
+  {% comment %}
+    Product slideshow, never moves
+  {% endcomment %}
+  {%
+    render 'product-gallery',
+    product: product,
+    aspect_ratio: gallery_aspect_ratio,
+    thumbnail_position: gallery_thumbnail_position,
+    image_crop: gallery_image_crop,
+    click_to_zoom: gallery_click_to_zoom,
+    hover_zoom: gallery_hover_zoom
+  %}
+  <div class="product-main">
+    <div class="product-details" data-product-details>
+      
+      
+      {% if is_product_modal %}
+        <h2 class="product-title">
+          <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+        </h2>
+      {% else %}
+        {% if template == 'index' %}
+          <h2 class="product-title">
+        {% else %}
+            
+            
+          {% if product.metafields.custom_fields["american_made"] == 1 %}
+            <img class="american-made-icon" src="https://cdn.shopify.com/s/files/1/0799/0299/files/made-in-america.svg?v=1612994687">
+            <p class="american-made">American Made</p>
+          {% endif %}
+            
+            
+          {% render "outdoorsmans-ships-in-days" %}
+            
+            
+            
+          <h1 class="product-title">
+        {% endif %}
+          {% unless onboarding %}
+            {{ product.title }} 
+          {% else %}
+            {{ 'onboarding.product.title' | t }}
+          {% endunless %}
+        {% if template == 'index' %}
+          </h2>
+        {% else %}
+          </h1>
+        {% endif %}
+      {% endif %}
+
+      {% if settings.product_show_vendor and product.vendor != blank or onboarding %}
+        <div class="product-vendor">
+          {% unless onboarding %}
+            {%- capture vendor_link -%}
+              {{ product.vendor | link_to_vendor }}
+            {%- endcapture -%}
+            {{ 'product.general.by_vendor_html' | t: vendor_link: vendor_link }}
+          {% else %}
+            {{ 'onboarding.product.by_vendor' | t }}
+          {% endunless %}
+        </div>
+      {% endif %}
+
+      
+{% comment %}Start automatically added Judge.me widget{% endcomment %}
+  {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: true, product: product %}
+{% comment %}End automatically added Judge.me widget{% endcomment %}
+{% if settings.product_ratings_reviews %}
+        <div class="product-ratings">
+          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}">
+            <span class="spr-badge">
+              <span class="spr-starrating spr-badge-starrating">
+                <i class="spr-icon spr-icon-star-empty"></i>
+                <i class="spr-icon spr-icon-star-empty"></i>
+                <i class="spr-icon spr-icon-star-empty"></i>
+                <i class="spr-icon spr-icon-star-empty"></i>
+                <i class="spr-icon spr-icon-star-empty"></i>
+              </span>
+            </span>
+          </span>
+        </div>
+      {% endif %}
+
+      <div class="product-pricing" aria-live="polite">
+        {%
+          render 'product-badge',
+          class_root: 'product',
+          product_available: product_available,
+          on_sale: on_sale,
+          price: price,
+          compare_at_price: compare_at_price,
+          show_saved: true
+        %}
+
+        {%
+          render 'product-price',
+          class_root: 'product',
+          price: price,
+          price_varies: false,
+          compare_at_price: compare_at_price,
+          compare_at_price_varies: false,
+          on_sale: on_sale,
+          emphasize_price: false,
+          show_original: true
+        %}
+      </div>
+
+      {% if settings.product_show_sku == true %}
+        {% unless onboarding %}
+          <div
+            class="
+              product-sku
+              {% if sku == empty %}product-sku--empty{% endif %}
+            "
+          >
+            {{ 'product.general.sku_html' | t: sku: sku | strip_newlines }}
+          </div>
+        {% endunless %}
+      {% endif %}
+    </div>
+    
+    
+
+    {% comment %}
+      Product form original location, will remain unless is 3 column layout
+    {% endcomment %}
+    <div class="product-form--regular" data-product-form-regular>
+      <div data-product-form-area>
+        {% if is_product_modal %}
+          <div data-product-quickshop-message class="product-message--container"></div>
+        {% endif %}
+
+        {% unless onboarding %}
+          {%
+            render 'product-form',
+            product: product,
+            selected_variant: selected_variant,
+            is_product_modal: is_product_modal,
+          %}
+        {% endunless %}
+
+        {% if hide_description %}
+          <a
+            href="{{ product.url | within: collection }}"
+            class="product-link"
+            data-product-details-link
+          >
+            {{ 'product.buttons.view_details' | t }}
+          </a>
+        {% endif %}
+
+        {% if enable_social_sharing and is_product_modal == false %}
+          {{ share_buttons | strip_newlines }}
+        {% endif %}
+      </div>
+    </div>
+
+    {% comment %}
+      Product description field, never moves
+    {% endcomment %}
+    
+    
+    
+    
+
+     
+    <!-- Tab links -->
+    <div class="UM-tab">
+      <button class="UM-tablinks active" onclick="openTab(event, 'overview')">Overview</button>
+      
+      {% if product.type == 'Bino Stud' %}
+        <button class="UM-tablinks" onclick="openTab(event, 'sizing-guide')">Which Stud Do I Need?</button>
+      {% endif %}
+
+      {% if product.metafields.custom_fields["technical"] != blank %}
+        <button class="UM-tablinks" onclick="openTab(event, 'technical')">Technical</button>
+      {% endif %}
+      
+      
+      {% if product.metafields.custom_fields["our_take"] != blank %}
+        <button class="UM-tablinks" onclick="openTab(event, 'ourTake')">Our Take</button>
+      {% endif %}
+      
+      
+      {% if product.metafields.custom_fields["product_video"] != blank %}
+        <button class="UM-tablinks" onclick="openTab(event, 'productVideo')">Video</button>
+      {% endif %}
+      
+      {% if product.metafields.custom_fields["faq"] != blank %}
+        <button class="UM-tablinks" onclick="openTab(event, 'faq')">FAQs</button>
+      {% endif %}
+      
+    </div>
+
+    <!-- Tab content -->
+    <div id="overview" class="UM-tabcontent defaultOpen">
+      <div class="product-description rte" data-product-description>
+        {{ product.description }}
+      </div>
+    </div>
+
+    {% if product.type == 'Bino Stud' %}
+      <div id="sizing-guide" class="UM-tabcontent">
+        <div class="custom-field custom-field__binocular_sizing custom-field__type--html">
+          <div class="custom-field--value">
+            <h4>Which Stud Do I Need?</h4>
+            <p>For best results type your exact binocular model and make sure to find it in the compatability chart. If you do not find your model, please give us a call and we'll be happy to help.</p>
+            <a style="color: #cc0000;" href="/pages/which-stud-do-i-need">Visit the Compatibility Chart</a>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    
+    {% if product.metafields.custom_fields["technical"] != blank %}
+    <div id="technical" class="UM-tabcontent">
+      <div class="custom-field custom-field__technical custom-field__type--html">
+        <div class="custom-field--value">
+          {{ product.metafields.custom_fields["technical"] }}
+          {% if product.metafields.custom_fields["owners_manual_url"] != blank %}  
+	          <a class="prod-manual" target="_blank" href="{{ product.metafields.custom_fields["owners_manual_url"] }}">View Full Product Manual</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    
+    {% if product.metafields.custom_fields["our_take"] != blank %}
+    <div id="ourTake" class="UM-tabcontent">
+      <div class="custom-field custom-field__technical custom-field__type--html">
+        <div class="custom-field--value">
+          {{ product.metafields.custom_fields["our_take"] }}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% if product.metafields.custom_fields["product_video"] != blank %}
+    <div id="productVideo" class="UM-tabcontent">
+      <div class="custom-field custom-field__technical custom-field__type--html">
+        <div class="custom-field--value">
+          <div class="embed-container" style="width: 100%;"><iframe style="width: 100%; min-height: 299px;" src="{{ product.metafields.custom_fields["product_video"] }}" frameborder="0" allowfullscreen=""></iframe></div>
+        </div>
+        {% if product.metafields.custom_fields["product_video_ii"] != blank %}
+
+          <div class="custom-field--value" style="margin-top: 25px;">
+            <div class="embed-container" style="width: 100%;"><iframe style="width: 100%; min-height: 299px;" src="{{ product.metafields.custom_fields["product_video_ii"] }}" frameborder="0" allowfullscreen=""></iframe></div>
+          </div>
+
+      {% endif %}
+      </div>
+    </div>
+      
+    {% endif %}
+
+ 
+	{% if product.metafields.custom_fields["faq"] != blank %}
+      <div id="faq" class="UM-tabcontent">
+        <div class="custom-field custom-field__faq custom-field__type--html">
+          <div class="custom-field--value">
+              {{ product.metafields.custom_fields["faq"] }}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+
+    
+    {% comment %}
+		END Updated Media
+    {% endcomment %}
+    
+    
+    {% if readmore_split[0] != blank and hide_description != true %}
+      <div class="product-description rte" data-product-description>
+        {{ readmore_split[0] }}
+      </div>
+    {% endif %}
+
+    {% if enable_social_sharing and is_product_modal %}
+      {{ share_buttons | strip_newlines }}
+    {% endif %}
+    
+    <div class="product-warranty-info" style="margin-top: 25px;">
+      <div class="badges">
+		{% if product.metafields.custom_fields["60-days"] == 1  %}
+        <a href="https://outdoorsmans.com/pages/returns-exchanges-and-warranties"><img class="trust-badges" src="https://cdn.shopify.com/s/files/1/0799/0299/files/icon-money-back.svg?v=1614713311"></a>
+        {% endif %}        
+        {% if product.metafields.custom_fields["lifetime"] == 1  %}
+            <a href="https://outdoorsmans.com/pages/returns-exchanges-and-warranties"><img class="trust-badges" src="https://cdn.shopify.com/s/files/1/0799/0299/files/icon-warranty.svg?v=1614713311"></a>
+        {% endif %}
+        {% if product.metafields.custom_fields["american_made"] == 1 %}
+            <a href="https://outdoorsmans.com/pages/returns-exchanges-and-warranties"><img class="trust-badges" src="https://cdn.shopify.com/s/files/1/0799/0299/files/icon-american.svg?v=1614713311"></a>
+        {% endif %}
+      </div>
+      <div class="od-contact">
+        <p><b>Have any questions?</b></p>
+        <p><b>Phone:</b> 1-800-291-8065<br/>
+          <b>Email:</b> info@outdoorsmans.com<br/>
+			<b>Hours:</b> Mon-Fri 9AM – 5PM MST<br/>
+			or hit the chat button during store hours. 
+      </div>
+    </div>
+    
+  </div>
+
+  {% comment %}
+    If is a 3 column layout, the form will move here at $bp-large (layout.isBreakpoint('L'))
+  {% endcomment %}
+  {% if layout == 'layout--three-col' %}
+    <div class="product-form--alt" data-product-form-alt></div>
+  {% endif %}
+</article>
+
+
+{% if readmore_split[1] != blank and hide_description != true and is_product_modal != true %}
+  <div class="product-readmore rte" data-product-readmore>
+    {{ readmore_split[1] }}
+  </div>
+{% endif %}

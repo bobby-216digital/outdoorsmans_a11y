@@ -1,0 +1,46 @@
+<script>
+
+  if (window.Extend && window.ExtendShopify && window.Shopify.currency.active == "USD") {
+
+    var productForm = document.querySelector('form[action="/cart/add"]');
+
+    productForm.addEventListener('change', function () {
+      var variantId = productForm.id.value;
+      if (variantId) {
+        Extend.setActiveProduct('#extend-offer', variantId);
+      }
+    });
+    var firstVariant = {{ product.selected_or_first_available_variant.id }}
+        Extend.buttons.render('#extend-offer', {referenceId: firstVariant })
+    
+    var addToCartButton = document.querySelector('.product-form--atc-button');  
+    
+    function handleAddToCart (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      var quantityEl = document.querySelector('[name="quantity"]');
+      var quantity = quantityEl && quantityEl.value;
+
+      ExtendShopify.handleAddToCart("#extend-offer", {
+        quantity: quantity,
+        modal: false,
+        done: function () {
+          addToCartButton.removeEventListener("click", handleAddToCart, true);
+          addToCartButton.click();
+        },
+      });             
+    }
+    
+    function addClickListener (e){
+      addToCartButton.addEventListener("click", handleAddToCart, true);
+    }
+    
+    window.addEventListener('cartcount:update', addClickListener)
+    
+    window.addEventListener('flyOutError', addClickListener)
+    
+    addToCartButton.addEventListener("click", handleAddToCart, true);
+	
+  }
+</script>

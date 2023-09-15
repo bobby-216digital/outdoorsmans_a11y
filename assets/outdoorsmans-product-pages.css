@@ -1,0 +1,328 @@
+.half-half {
+  padding: 35px;
+}
+
+.half-half a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 2px solid black;
+  transition: .2s;
+}
+
+.half-half a:hover {
+  border-bottom: 2px solid #cc0000;
+}
+
+.half-half p {
+  line-height: 1.6;
+}
+
+.two-thirds-left, .two-thirds-right {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .two-thirds-left div:first-of-type,
+.two-thirds-right div:first-of-type{
+    padding: 50px 35px;
+    min-height: 200px;
+  }
+  
+  .two-thirds-left div h2,
+.two-thirds-right div h2{
+    margin-bottom: 0;
+    align-items: stretch;
+  }
+  
+  .two-thirds-left div p,
+.two-thirds-right div p{
+    line-height: 1.6;
+  }
+  
+  .two-thirds-left div:last-of-type,
+.two-thirds-right div:last-of-type{
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 35px;
+  }
+
+.callout-text {
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: bold;
+}
+
+.od-textured-background {
+  background-image: url(https://cdn.shopify.com/s/files/1/0799/0299/files/dark-bg.jpg?v=1614720215);
+  background-color: black;
+  color: white;
+  background-size: cover;
+}
+
+.gray-border-top-bottom {
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+.hero-testimonial-right .jdgm-rev-widg__header {
+    display: none!important;
+  }
+  
+  .hero-testimonial-right .jdgm-rev-widg {
+    border: 0;
+  }
+  
+  .hero-testimonial-right .jdgm-rev {
+    margin-bottom: 36px;
+    border: 0;
+  }
+  
+  .hero-testimonial-left {
+    background-image: url('https://cdn.shopify.com/s/files/1/0799/0299/files/NOR08690-darkened.jpg?v=1618250568');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    line-height: 1.6;
+  }
+  
+  .hero-testimonial-right {
+    padding: 20px;
+    border-top: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
+  }
+
+.testimonial-container {
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  font-size: 18px;
+    font-weight: bold;
+}
+
+.feature-list-od {
+  list-style-type: none;
+    margin-top: -0;
+    margin-left: 0;
+    padding-left: 0;
+    font-size: 14px;
+}
+
+.feature-list-od li {
+  border-top: 1px solid #ddd;
+  padding: 10px;
+  line-height: 20px;
+}
+
+.feature-list-od li:last-of-type {
+  border-bottom: 1px solid #ddd;
+}
+
+.gen-2-tech-specs td {
+  border: 0!important;
+}
+
+  @media screen and (min-width: 970px) {
+
+ 
+
+  .reversed div:first-of-type {
+    grid-column-start: 2;
+    grid-row-start: 1;
+  }
+
+  .reversed div:last-of-type {
+    grid-column-start: 1;
+    grid-row-start: 1;
+  }
+
+  .two-thirds-left {
+    flex-direction: row;
+    min-height: 700px;
+  }
+  
+  .two-thirds-left div:first-of-type {
+    flex: 60%;
+    padding: 50px 70px;
+  }
+  
+ 
+  .two-thirds-left div:last-of-type {
+    flex: 40%;
+    padding: 50px 70px;
+  }
+    
+  .two-thirds-right {
+    flex-direction: row;
+    min-height: 700px;
+  }
+  
+  .two-thirds-right div:first-of-type {
+    flex: 40%;
+    padding: 50px 70px;
+  }
+
+  .two-thirds-right div:last-of-type {
+    flex: 60%;
+    padding: 50px 70px;
+  }
+
+
+    
+  .half-half {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+  
+  .half-half {
+    padding-top: 65px;
+    padding-bottom: 65px;
+  }
+
+  .half-half p,
+  .half-half h2 {
+    max-width: 600px;
+    margin: 15px auto 0;
+    line-height: 1.6;
+  }
+
+  .product-video-container {
+          display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-testimonial {
+    display: flex;
+  }
+  
+  .hero-testimonial-left {
+    flex: 1 1 0px;
+    display: flex;
+    align-items: end;
+    line-height: 1.6;
+  }
+  
+ .hero-testimonial-right {
+    flex: 1 1 0px;
+  }
+
+  .testimonial-container {
+    font-size: 22px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    text-align: left;
+  }  
+
+  .testimonial-author {
+      font-size: 18px;
+  }
+
+  .product-video-container {
+    max-width: 600px;
+  }
+}
+
+.videoWrapper {
+	 position: relative;
+	 width: 100%;
+	 height: 0;
+	 background-color: #000;
+}
+ .videoWrapper43 {
+	 padding-top: 75%;
+}
+ .videoWrapper169 {
+	 padding-top: 56%;
+}
+ .videoIframe {
+	 position: absolute;
+	 top: 0;
+	 right: 0;
+	 bottom: 0;
+	 left: 0;
+	 width: 100%;
+	 height: 100%;
+	 background-color: transparent;
+}
+ .videoPoster {
+	 position: absolute;
+	 top: 0;
+	 right: 0;
+	 left: 0;
+	 width: 100%;
+	 height: 100%;
+	 margin: 0;
+	 padding: 0;
+	 cursor: pointer;
+	 border: 0;
+	 outline: none;
+	 background-position: 50% 50%;
+	 background-size: 100% 100%;
+	 background-size: cover;
+	 text-indent: -999em;
+	 overflow: hidden;
+	 opacity: 1;
+	 -webkit-transition: opacity 800ms, height 0s;
+	 -moz-transition: opacity 800ms, height 0s;
+	 transition: opacity 800ms, height 0s;
+	 -webkit-transition-delay: 0s, 0s;
+	 -moz-transition-delay: 0s, 0s;
+	 transition-delay: 0s, 0s;
+}
+ .videoPoster:before {
+	 content: &#39;
+	&#39;
+	;
+	 position: absolute;
+	 top: 50%;
+	 left: 50%;
+	 width: 80px;
+	 height: 80px;
+	 margin: -40px 0 0 -40px;
+	 border: 5px solid #fff;
+	 border-radius: 100%;
+	 -webkit-transition: border-color 300ms;
+	 -moz-transition: border-color 300ms;
+	 transition: border-color 300ms;
+}
+ .videoPoster:after {
+	 content: &#39;
+	&#39;
+	;
+	 position: absolute;
+	 top: 50%;
+	 left: 50%;
+	 width: 0;
+	 height: 0;
+	 margin: -20px 0 0 -10px;
+	 border-left: 40px solid #fff;
+	 border-top: 25px solid transparent;
+	 border-bottom: 25px solid transparent;
+	 -webkit-transition: border-color 300ms;
+	 -moz-transition: border-color 300ms;
+	 transition: border-color 300ms;
+}
+ .videoPoster:hover:before, .videoPoster:focus:before {
+	 border-color: #f00;
+}
+ .videoPoster:hover:after, .videoPoster:focus:after {
+	 border-left-color: #f00;
+}
+ .videoWrapperActive .videoPoster {
+	 opacity: 0;
+	 height: 0;
+	 -webkit-transition-delay: 0s, 800ms;
+	 -moz-transition-delay: 0s, 800ms;
+	 transition-delay: 0s, 800ms;
+}
+
+.undervideo-testimonial {
+  text-align: center;
+}

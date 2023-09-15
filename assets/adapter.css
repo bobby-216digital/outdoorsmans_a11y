@@ -1,0 +1,186 @@
+.adapter-blocks-container {
+	overflow: scroll;
+}
+
+ 
+  
+  
+  .hero-testimonial-right .jdgm-rev-widg__header {
+  	display: none!important;
+  }
+  
+  .hero-testimonial-right .jdgm-rev-widg {
+    border: 0;
+  }
+  
+  .hero-testimonial-right .jdgm-rev {
+  	margin-bottom: 36px;
+    border: 0;
+  }
+  
+  .hero-testimonial-left {
+    background-image: url('https://cdn.shopify.com/s/files/1/0799/0299/files/NOR08690-darkened.jpg?v=1618250568');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    line-height: 1.6;
+  }
+  
+  .hero-testimonial-right {
+    padding: 20px;
+    border-top: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
+  }
+  
+
+@media screen and (min-width: 970px) {
+  
+  .hero-testimonial-adapter {
+  	display: flex;
+  }
+  
+  .hero-testimonial-left {
+    flex: 1 1 0px;
+    display: flex;
+    align-items: center;
+    line-height: 1.6;
+  }
+  
+ .hero-testimonial-right {
+    flex: 1 1 0px;
+  }
+  
+  .the-details {
+	flex-direction: row;
+    min-height: 700px;
+  }
+  
+  .the-details div:first-of-type {
+  	flex: 60%;
+    padding: 50px 70px;
+  }
+  
+ 
+  .the-details div:last-of-type {
+    flex: 40%;
+    padding: 50px 70px;
+  }
+  
+  
+  .tripod-technical {
+  	display: flex;
+    flex-direction: row;
+  }
+  
+  .tripod-technical  div:first-of-type {
+  	flex: 60%;
+  }
+  
+  .tripod-technical  div:last-of-type {
+  	flex: 40%;
+    padding: 50px 70px;
+  }
+  
+   .tripod-comparison {
+  	display: flex;
+    max-width: 1200px;
+    margin: 85px auto; 
+  }
+  
+  .adapter-comparison {
+  	display: flex;
+    max-width: 1200px;
+    margin: 85px auto; 
+    text-align: left!important;
+  }
+  
+  
+  .tripod-comparison div:first-of-type{
+  	width: 25%;
+    text-align: right;
+    padding-right: 20px;
+    border-right: 1px solid #eeeeee;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .adapter-comparison .content{
+  	width: 33%;
+    text-align: left;
+    padding-right: 20px;
+    border-right: 1px solid #eeeeee;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .tripod-comparison div.tripod-block {
+  	width: 25%;
+    padding: 10px;
+    transition: .3s;
+    text-align: center;
+    font-size: 12px;
+    line-height: 22px;
+  }
+  
+ .adapter-comparison div.adapter-block{
+  	width: 50%;
+    padding: 10px;
+    transition: .3s;
+    text-align: center;
+    font-size: 12px;
+    line-height: 22px;
+  }
+  
+  .tripod-comparison div.tripod-block:hover {
+    box-shadow: 0px 3px 13px 3px rgb(0 0 0 / 10%)
+  }
+  
+  .tripod-comparison div.tripod-block:hover,
+  .adapter-comparison div.adapter-block:hover{
+    box-shadow: 0px 3px 13px 3px rgb(0 0 0 / 10%)
+  }
+  
+  .tripod-comparison input,
+  .adapter-comparison input{
+  	border: 1px solid #cc0000;
+    text-align: center;
+     margin-bottom: 10px;
+    background: white;
+    color: black;
+    padding: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: .2s;
+    width: 100%;
+    max-width: 200px;
+    margin: auto auto 15px;
+  } 
+  
+  .tripod-comparison input:hover,
+  .adapter-comparison input:hover{
+    background-color: #cc0000;
+  	color: white;
+    cursor: pointer;
+  }
+  
+  .tripod-comparison div img,
+  .adapter-comparison div img{
+  	max-width: 90%;
+    margin: 0 auto;
+  }
+  
+  .video-section {
+  	display: block;
+  }
+  
+  .adapter-blocks-container {
+  	overflow: hidden;
+  }
+  
+}

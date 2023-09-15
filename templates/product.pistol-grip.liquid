@@ -1,0 +1,129 @@
+<link type="text/css" href="{{ 'adapter.css' | asset_url }}" rel="stylesheet">
+<link type="text/css" href="{{ 'outdoorsmans-product-pages.css' | asset_url }}" rel="stylesheet">
+
+{{product.metafields.shogun.above}}
+{% render 'breadcrumbs' %}
+
+{% section 'static-product' %}
+
+<section class="two-thirds-left" style="margin-top: 75px;">
+  <div style="background: url('https://cdn.shopify.com/s/files/1/0799/0299/files/DSC00059.jpg?v=1662578031');background-size: cover;background-position: center;"></div>
+  <div class="gray-border-top-bottom">
+    <h2>The lightest, fastest glassing rig you’ve ever seen.</h2>
+    <p>The Pistol Grip is the perfect head for running and gunning while keeping things lightweight and streamlined. It combines the ease and flexibility of one-handed operation with a simple, more convenient mechanism than most ball-style tripod heads.</p>
+    <p>Believe it or not, the pistol grip was created with the idea of mimicking the motion of the control stick on an ultralight aircraft. Floyd Green, a pilot of both helicopters and small, personal craft, realized that the intuitive motion of the squeeze-to-operate function would translate well to a tripod head. The design holds up nearly 20 years later with some slight improvements and add-ons that enhance its capabilities for hunting.</p>
+  </div>
+</section>
+
+<section class="half-half od-textured-background reversed">
+    <div class="product-video-container">
+      <div class="videoWrapper videoWrapper169 js-videoWrapper">
+        <!-- YouTube iframe. -->
+        <!-- note the iframe src is empty by default, the url is in the data-src="" argument -->
+        <!-- also note the arguments on the url, to autoplay video, remove youtube adverts/dodgy links to other videos, and set the interface language -->
+        <iframe class="videoIframe js-videoIframe" src="" frameborder="0" allowTransparency="true" allowfullscreen data-src="https://www.youtube.com/embed/cFT0PwOIszY?autoplay=1&modestbranding=1&rel=0&hl=sv"></iframe>
+        <!-- the poster frame - in the form of a button to make it keyboard accessible -->
+        <button class="videoPoster js-videoPoster" style="background-image:url(https://cdn.shopify.com/s/files/1/0799/0299/files/pistol-grip-video.jpg?v=1662578962);">Play video</button>
+      </div>
+    </div>
+    <div class="middle-text">
+      <h2 style="margin-bottom: 0;">Build Quality That Speaks For Itself</h2>
+      <p>Like all Outdoorsmans Tripod Heads, the Pistol Grip is manufactured by Rim Country Manufacturing in Payson, Arizona. This partnership continues to provide hunters with the most dependable, serviceable glassing equipment in the world.</p>
+      <p>We could use this space to wax about the durability of this head, but we’d rather give you the proof of it.</p>
+      <p>Over nearly two decades, thousands of examples of this tripod head have been dropped, bashed, beaten, and run over countless times. This plucky little piece keeps on taking it. When we receive a Pistol Grip in the shop for service, it is often 10-15 years old. A quick cleaning and tune-up can get even the most weathered examples back in the field in a matter of days.</p>  
+      
+    </div>
+</section>
+
+<section class="half-half reversed">
+    <div>
+      <img style="max-width: 100%;" src="https://cdn.shopify.com/s/files/1/0799/0299/files/Pistol-1.jpg?v=1662579478" />
+      <!--<video id="tripod-video" draggable="false" muted autoplay playsinline  loop style="width: 100%; height: 100%;object-fit:fill;"><source autoplay muted type="video/mp4" src="https://imgur.com/VOnrejs.mp4"></video> -->
+    </div>
+    <div>
+      <h2 style="margin-bottom: 0;">Use Cases</h2>
+      <p>The Pistol Grip Tripod Head is typically favored by those who tend to glass for movement. In medium-high density areas, this allows a glasser to save time and take inventory of a hillside when there is less need for ultra-fine examination. However, the Pistol Grip has its advantages when it comes to locating hard-to-spot game as well</p>
+      <p>Combined with the <a href="https://outdoorsmans.com/products/outdoorsmans-panner">Panner attachment</a>, the Pistol Grip becomes a whole different animal. The separate panning mechanism allows this head to pan without keeping tension on the handle. It’s easily installed, and we highly recommend the combination of the two. With the Panner or <a href="https://outdoorsmans.com/products/outdoorsmans-quick-release-panner">Quick-Release Panner</a>, glassing in a “grid” pattern becomes much smoother. The smoother that panning action, the more detail the eye can pick up on.</p>
+      <p>The Outdoorsmans Pistol Grip can trace its roots to the inception of western glassing techniques, and it’s been a staple for Outdoorsmans customers for over two decades for a reason. It’s simple and effective, but it also has some “sleeper features” such as the rifle rest groove in the body that allows for quick shots when the head is oriented horizontally. For binocular-exclusive glassing, the Pistol Grip is truly one-of-a-kind.</p>
+      <!--<p>*Quick Release function requires a ⅜ adapter plate. For more information check out this video.</p>-->
+    </div>
+</section>
+
+<section class="hero-testimonial-adapter"  >
+ 
+  <div class="hero-testimonial-left" style="background-image: url(https://cdn.shopify.com/s/files/1/0799/0299/files/4-17-2020_017_3a398e70-42e5-41cb-9de4-d606aac4974c.jpg?v=1662579349)!important;">
+    <div class="testimonial-container" style="max-width: 700px;margin-left: auto; padding: 15px;">
+      <p class="text-white">“Fast, change from small spotting scope to bino to shooting V. I absolutely love this light weight fast attachment. Wished I had bought one years ago.”</p>
+      <p class="text-white testimonial-author"><b>- John CO, Verified Buyer</b></p>
+    </div>
+  </div>
+  <div class="hero-testimonial-right">
+      {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
+  </div>
+
+</section>
+
+
+<!--{% comment %}Start automatically added Judge.me widget{% endcomment %}
+  {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, product: product %}
+{% comment %}End automatically added Judge.me widget{% endcomment %}-->
+
+{% section 'tripod-head-comparison' %}
+
+{% include 'cross-sell' %}
+
+
+
+{{product.metafields.shogun.below}}
+
+
+<script>
+  var addTripodToCart = function(variantID){
+    var id = variantID;
+    $.ajax({
+        type: 'POST', 
+        url: '/cart/add.js',
+        dataType: 'json', 
+        data: {id:id,quantity:1},
+        success: function(){
+              location.href="/cart";
+        }
+     });
+  }
+  
+  //document.getElementById("tripod-video").play();
+
+// poster frame click event
+$(document).on('click','.js-videoPoster',function(ev) {
+  ev.preventDefault();
+  var $poster = $(this);
+  var $wrapper = $poster.closest('.js-videoWrapper');
+  videoPlay($wrapper);
+});
+
+// play the targeted video (and hide the poster frame)
+function videoPlay($wrapper) {
+  var $iframe = $wrapper.find('.js-videoIframe');
+  var src = $iframe.data('src');
+  // hide poster
+  $wrapper.addClass('videoWrapperActive');
+  // add iframe src in, starting the video
+  $iframe.attr('src',src);
+}
+
+// stop the targeted/all videos (and re-instate the poster frames)
+function videoStop($wrapper) {
+  // if we're stopping all videos on page
+  if (!$wrapper) {
+    var $wrapper = $('.js-videoWrapper');
+    var $iframe = $('.js-videoIframe');
+  // if we're stopping a particular video
+  } else {
+    var $iframe = $wrapper.find('.js-videoIframe');
+  }
+  // reveal poster
+  $wrapper.removeClass('videoWrapperActive');
+  // remove youtube link, stopping the video from playing in the background
+  $iframe.attr('src','');
+}
+</script>

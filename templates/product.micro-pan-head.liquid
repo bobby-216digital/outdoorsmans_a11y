@@ -1,0 +1,133 @@
+<link type="text/css" href="{{ 'adapter.css' | asset_url }}" rel="stylesheet">
+<link type="text/css" href="{{ 'outdoorsmans-product-pages.css' | asset_url }}" rel="stylesheet">
+
+{{product.metafields.shogun.above}}
+{% render 'breadcrumbs' %}
+
+{% section 'static-product' %}
+
+<section class="two-thirds-left" style="margin-top: 75px;">
+  <div style="background: url('https://cdn.shopify.com/s/files/1/0799/0299/files/outdoorsmans-micro-pan-head_7ebd2481-3d32-40d0-bc0d-c6fba27602db.jpg?v=1660672695');background-size: cover;background-position: center;"></div>
+  <div class="gray-border-top-bottom">
+    <h2>For When Size Matters.</h2>
+    <p>When size and weight are your primary concern, you opt for a smaller tripod head. With that choice often comes the sacrifice of stability and effectiveness.</p>
+     <p>Not anymore.</p>
+     <p>The Micro Pan Head weighs in at a bite-size 7.5 oz and has a capacity way above its class. The precision machined 6061 aluminum body features an open-gear design to achieve its unmatched form factor.</p>
+      <p class="callout-text">When it comes to glassing, the Micro outperforms many larger, more complicated heads on the market.</p>
+  </div>
+</section>
+
+
+<section class="half-half reversed">
+    <div>
+      <video id="tripod-video" draggable="false" muted autoplay playsinline  loop style="width: 100%; height: 100%;object-fit:fill;"><source autoplay muted type="video/mp4" src="https://imgur.com/VOnrejs.mp4"></video>
+    </div>
+    <div>
+      <h2 style="margin-bottom: 0;">Lasting Construction</h2>
+      <p>This head is at home in nearly any situation. The adjustment knobs rotate with an amount of force that’s easy, but not too easy. These controls are also able to cam and reposition for quick adjustments and are simple to manipulate–even with cold hands or gloves.</p>
+      <p>The Micro Pan Head features a pan knob similar to the Pan Head, but the tilt knob is built into the handle. The tilt function locks out with just the right amount of rotation and allows for varying levels of tension. Micro Pan Head owners often praise the ability to adjust tilt without changing the position of their hands.</p>
+      <p>This head is designed for use with Outdoorsmans Dovetail adapter plates, but can be mounted to any set of tripod legs with a ⅜’ mounting thread. With extremely fine tolerances, as with all Outdoorsmans parts, there is never a concern with fit or function. This head locks down tight in any position and will not gradually unscrew itself from your tripod legs, as is the case with many other heads.</p>
+      <p class=”callout-text”>The Pan Head is billet machined and assembled in Payson, Arizona from 6061 aircraft-grade aluminum and each unit is hand-inspected. Outdoorsmans offers a 60-day limited warranty on all products manufactured in the USA. </p>
+    </div>
+    
+</section>
+
+<section class="half-half od-textured-background reversed ">
+    <div class="product-video-container">
+      <div class="videoWrapper videoWrapper169 js-videoWrapper">
+        <!-- YouTube iframe. -->
+        <!-- note the iframe src is empty by default, the url is in the data-src="" argument -->
+        <!-- also note the arguments on the url, to autoplay video, remove youtube adverts/dodgy links to other videos, and set the interface language -->
+        <iframe class="videoIframe js-videoIframe" src="" frameborder="0" allowTransparency="true" allowfullscreen data-src="https://www.youtube.com/embed/ArNr-8uJjto?autoplay=1&modestbranding=1&rel=0&hl=sv"></iframe>
+        <!-- the poster frame - in the form of a button to make it keyboard accessible -->
+        <button class="videoPoster js-videoPoster" style="background-image:url(https://cdn.shopify.com/s/files/1/0799/0299/files/outdoorsmans-micro-pan-head-videojpg.jpg?v=1660676764);">Play video</button>
+      </div>
+    </div>
+    <div class="middle-text">
+      <h2 style="margin-bottom: 0;">Who is the Micro Pan Head for?</h2>
+       <p>With the very lightweight (7.5 oz) nature of this head comes a slightly lower capacity than something like the Outdoorsmans Pan Head. We recommend the Micro Pan Head for binoculars and spotting scopes with an objective lens size of up to 65 mm. With the right attitude, 85 mm, 95 mm, and larger scopes can be used, but the added weight may prove cumbersome due to the lack of fluid drag. If you plan to use a large optic, we recommend mounting it with a Balance Rail or Extended Adapter Plate.</p>
+       <p>This head is very popular with sheep hunters, backpackers, and hike-to hunters. It fits into the ultralight category, weighing less than half a pound. There are few products like it on the market, let alone any that can match its build quality and weight.</p>
+    </div>
+    
+</section>
+
+
+<section class="hero-testimonial-adapter"  >
+ 
+  <div class="hero-testimonial-left" style="background-image: url(https://cdn.shopify.com/s/files/1/0799/0299/files/outdoorsmans-micro-pan-head-2.jpg?v=1660673669)!important;">
+    <div class="testimonial-container" style="max-width: 400px;margin-left: auto; padding: 15px;">
+      <p class="text-white">“This is a nice little lightweight, stable pan head. It’s smooth, the panning is excellent. If you wanna go light, don’t go without this.”</p>
+      <p class="text-white testimonial-author"><b>- Paul, Verified Buyer</b></p>
+    </div>
+  </div>
+  <div class="hero-testimonial-right">
+      {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
+  </div>
+
+</section>
+
+
+<!--{% comment %}Start automatically added Judge.me widget{% endcomment %}
+  {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, product: product %}
+{% comment %}End automatically added Judge.me widget{% endcomment %}-->
+
+{% section 'tripod-head-comparison' %}
+
+{% include 'cross-sell' %}
+
+
+
+{{product.metafields.shogun.below}}
+
+
+<script>
+  var addTripodToCart = function(variantID){
+    var id = variantID;
+    $.ajax({
+        type: 'POST', 
+        url: '/cart/add.js',
+        dataType: 'json', 
+        data: {id:id,quantity:1},
+        success: function(){
+              location.href="/cart";
+        }
+     });
+  }
+  
+  document.getElementById("tripod-video").play();
+
+// poster frame click event
+$(document).on('click','.js-videoPoster',function(ev) {
+  ev.preventDefault();
+  var $poster = $(this);
+  var $wrapper = $poster.closest('.js-videoWrapper');
+  videoPlay($wrapper);
+});
+
+// play the targeted video (and hide the poster frame)
+function videoPlay($wrapper) {
+  var $iframe = $wrapper.find('.js-videoIframe');
+  var src = $iframe.data('src');
+  // hide poster
+  $wrapper.addClass('videoWrapperActive');
+  // add iframe src in, starting the video
+  $iframe.attr('src',src);
+}
+
+// stop the targeted/all videos (and re-instate the poster frames)
+function videoStop($wrapper) {
+  // if we're stopping all videos on page
+  if (!$wrapper) {
+    var $wrapper = $('.js-videoWrapper');
+    var $iframe = $('.js-videoIframe');
+  // if we're stopping a particular video
+  } else {
+    var $iframe = $wrapper.find('.js-videoIframe');
+  }
+  // reveal poster
+  $wrapper.removeClass('videoWrapperActive');
+  // remove youtube link, stopping the video from playing in the background
+  $iframe.attr('src','');
+}
+</script>
+

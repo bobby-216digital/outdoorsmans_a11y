@@ -1,0 +1,135 @@
+<link type="text/css" href="{{ 'adapter.css' | asset_url }}" rel="stylesheet">
+<link type="text/css" href="{{ 'outdoorsmans-product-pages.css' | asset_url }}" rel="stylesheet">
+
+{{product.metafields.shogun.above}}
+{% render 'breadcrumbs' %}
+
+{% section 'static-product' %}
+
+<section class="two-thirds-left" style="margin-top: 75px;">
+  <div style="background: url('https://cdn.shopify.com/s/files/1/0799/0299/files/window-mount.jpg?v=1665088108');background-size: cover;background-position: center;"></div>
+  <div class="gray-border-top-bottom">
+    <h2>Stay as fast as your prey.</h2>
+    <p>Some of us are backpack hunters, some of us are road hunters, and most of us are some combination of both. There are times when the most effective tactic available is to cover country quickly from a vehicle. Antelope hunting comes to mind. When you need to get eyes on something and keep moving, don’t bother busting out your tripod setup and waste precious time.</p>
+    <p class="callout-text">The Outdoorsmans Window Mount seems pretty self explanatory, but there are some key features that make it invaluable for certain hunting scenarios.</p>
+
+  </div>
+</section>
+
+<section class="half-half od-textured-background reversed">
+    <div class="product-video-container">
+      <div class="videoWrapper videoWrapper169 js-videoWrapper">
+        <!-- YouTube iframe. -->
+        <!-- note the iframe src is empty by default, the url is in the data-src="" argument -->
+        <!-- also note the arguments on the url, to autoplay video, remove youtube adverts/dodgy links to other videos, and set the interface language -->
+        <iframe class="videoIframe js-videoIframe" src="" frameborder="0" allowTransparency="true" allowfullscreen data-src="https://www.youtube.com/embed/Sfo_eh8jyM4?autoplay=1&modestbranding=1&rel=0&hl=sv"></iframe>
+        <!-- the poster frame - in the form of a button to make it keyboard accessible -->
+        <button class="videoPoster js-videoPoster" style="background-image:url(https://cdn.shopify.com/s/files/1/0799/0299/files/outdoorsmans-window-mount-video.jpg?v=1665088265);">Play video</button>
+      </div>
+    </div>
+    <div class="middle-text">
+      <h2 style="margin-bottom: 0;">Easily Swappable</h2>
+      <p style="margin-top: 0;">The Window Mount can be used with any Outdoorsmans Tripod Head. This means that you can have the same smooth glassing from your window that you do from your tripod. Depending on your setup, it takes about 30 seconds to swap back and forth.</p>
+       <h2 style="margin-bottom: 0;">Lock-and-Leave Setup</h2>
+      <p style="margin-top: 0;">The window mount can also be left attached to your Tripod Head with your optic still attached on the other end. This means that all you need to do is roll your window down, slide it on, tighten it down, and you’re glassing.</p>
+      
+      
+    </div>
+</section>
+
+<section class="two-thirds-left ">
+    <div>
+      <img style="max-width: 100%;" src="https://cdn.shopify.com/s/files/1/0799/0299/files/window-man.jpg?v=1665512769" />
+      <!--<video id="tripod-video" draggable="false" muted autoplay playsinline  loop style="width: 100%; height: 100%;object-fit:fill;"><source autoplay muted type="video/mp4" src="https://imgur.com/VOnrejs.mp4"></video> -->
+    </div>
+    <div>
+      <h2 style="margin-bottom: 0;">Build Quality</h2>
+      <p style="margin-top: 0;">Like all Outdoorsmans Tripod Accessories, the Window Mount is manufactured by Rim Country Manufacturing in Payson, Arizona. This partnership continues to provide hunters with the most dependable, serviceable glassing equipment in the world. The Window Mount is also designed to do absolutely zero damage to your vehicle’s windows.</p>
+      <p>There are some obvious weight restrictions that should be noted, but with careful use and some forethought, it is very difficult to inflict damage (ie: breaking a window). With that in mind, this system works perfectly for binoculars and smaller spotting scopes.</p>
+      <p class="callout-text">The bottom line is this: If it seems like a bad idea or your optic is too heavy or unbalanced, don’t try it.</p>
+      <h2 style="margin-bottom:0;">Use Cases</h2>
+<p style="margin-top: 0;">Each season, the Window Mount is praised by hundreds of our customers who hunt big, open country. This tool has proven even more useful for customers who are physically disabled. This tool saves them the repetitive effort of getting in and out of a vehicle, or worse, being resigned to not participate.</p>
+<h2 style="margin-bottom: 0;">Wrap Up</h2>
+<p style="margin-top: 0;">The Outdoorsmans Window Mount was created to provide a solution for hunts and scouting trips that are based around a vehicle. Hunters are always hunting, so some of us like to carry one in the truck at all times, just in case. If you’re looking for a way to bump up the versatility of your existing tripod system or you or a loved one have a special requirement, it’s a no-brainer.</p>
+
+    </div>
+</section>
+
+<section class="hero-testimonial-adapter"  >
+ 
+  <div class="hero-testimonial-left" style="background-image: url(https://cdn.shopify.com/s/files/1/0799/0299/files/4-17-2020_017_3a398e70-42e5-41cb-9de4-d606aac4974c.jpg?v=1662579349)!important;">
+    <div class="testimonial-container" style="max-width: 700px;margin-left: auto; padding: 15px;">
+      <p class="text-white">“Fast, change from small spotting scope to bino to shooting V. I absolutely love this light weight fast attachment. Wished I had bought one years ago.”</p>
+      <p class="text-white testimonial-author"><b>- John CO, Verified Buyer</b></p>
+    </div>
+  </div>
+  <div class="hero-testimonial-right">
+      {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
+  </div>
+
+</section>
+
+
+<!--{% comment %}Start automatically added Judge.me widget{% endcomment %}
+  {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, product: product %}
+{% comment %}End automatically added Judge.me widget{% endcomment %}-->
+
+{% section 'tripod-head-comparison' %}
+
+{% include 'cross-sell' %}
+
+
+
+{{product.metafields.shogun.below}}
+
+
+<script>
+  var addTripodToCart = function(variantID){
+    var id = variantID;
+    $.ajax({
+        type: 'POST', 
+        url: '/cart/add.js',
+        dataType: 'json', 
+        data: {id:id,quantity:1},
+        success: function(){
+              location.href="/cart";
+        }
+     });
+  }
+  
+  //document.getElementById("tripod-video").play();
+
+// poster frame click event
+$(document).on('click','.js-videoPoster',function(ev) {
+  ev.preventDefault();
+  var $poster = $(this);
+  var $wrapper = $poster.closest('.js-videoWrapper');
+  videoPlay($wrapper);
+});
+
+// play the targeted video (and hide the poster frame)
+function videoPlay($wrapper) {
+  var $iframe = $wrapper.find('.js-videoIframe');
+  var src = $iframe.data('src');
+  // hide poster
+  $wrapper.addClass('videoWrapperActive');
+  // add iframe src in, starting the video
+  $iframe.attr('src',src);
+}
+
+// stop the targeted/all videos (and re-instate the poster frames)
+function videoStop($wrapper) {
+  // if we're stopping all videos on page
+  if (!$wrapper) {
+    var $wrapper = $('.js-videoWrapper');
+    var $iframe = $('.js-videoIframe');
+  // if we're stopping a particular video
+  } else {
+    var $iframe = $wrapper.find('.js-videoIframe');
+  }
+  // reveal poster
+  $wrapper.removeClass('videoWrapperActive');
+  // remove youtube link, stopping the video from playing in the background
+  $iframe.attr('src','');
+}
+</script>

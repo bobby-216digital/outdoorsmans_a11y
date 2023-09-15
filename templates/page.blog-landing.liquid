@@ -1,0 +1,82 @@
+<link type="text/css" href="{{ 'blog-styles.css' | asset_url }}" rel="stylesheet">
+
+<article class="site-page" style="margin:0;" data-template-page>
+  <header class="page-masthead">
+    <h1 class="page-title">
+      {{ page.title }}
+    </h1>
+  </header>
+
+  {% if page.content != blank %}
+    <div class="page-content rte">
+      {{ page.content }}
+    </div>
+  {% endif %}
+</article>
+
+<div class="blog-landing-blocks">
+  <a href="https://outdoorsmans.com/blogs/binoculars" style="background-color: black;background-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 30%),url(https://cdn.shopify.com/s/files/1/0799/0299/files/Binos-J.jpg?v=1664230763);background-size: cover;"><div >
+    <h2>Binoculars</h2>
+    <p>Maintenance tips, buying guides and glassing tactics.</p>
+    <p class="fake-button">View Posts</p>
+  </div></a>
+  <a href="https://outdoorsmans.com/blogs/spotting-scopes" style="background-color: black;background-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 30%),url(https://cdn.shopify.com/s/files/1/0799/0299/files/SpottingScopes-R.jpg?v=1664230653);background-size: cover;">
+    <div >
+      <h2>Spotting Scopes</h2>
+      <p>Maximize your spotting scopes potential.</p>
+      <p class="fake-button">View Posts</p>
+    </div>
+  </a>
+  <a href="https://outdoorsmans.com/blogs/rifle-scopes" style="background-color: black;background-image:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 30%),url(https://cdn.shopify.com/s/files/1/0799/0299/files/riflescopes.jpg?v=1666035308);background-size: cover;">
+    <div>
+      <h2>Rifle Scopes</h2>
+      <p>Read about the ins-and-outs of rifle scopes.</p>
+      <p class="fake-button">View Posts</p>
+    </div>
+  </a>
+  <a href="https://outdoorsmans.com/blogs/tripods" style="background-color: black;background-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 30%),url(https://cdn.shopify.com/s/files/1/0799/0299/files/tripods2.jpg?v=1666035455);background-size: cover;">
+    <div>
+      <h2>Tripods</h2>
+      <p>Build the perfect setup.</p>
+      <p class="fake-button">View Posts</p>
+    </div>
+  </a>
+  <a href="https://outdoorsmans.com/blogs/hunting-packs" style="background-color: black;background-image:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 30%),url(https://cdn.shopify.com/s/files/1/0799/0299/files/backpacks2.jpg?v=1666035459);background-size: cover;">
+    <div>
+      <h2>Backpacks</h2>
+      <p>Pack outs, training, and more.</p>
+      <p class="fake-button">View Posts</p>
+    </div>
+  </a>
+  <a href="https://outdoorsmans.com/blogs/outdoorsmans-gear-reviewed" style="background-color: black;background-image:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 30%),url(https://cdn.shopify.com/s/files/1/0799/0299/files/gear-reviewed.jpg?v=1666038486);background-size: cover;">
+    <div>
+      <h2>Outdoorsmans Gear Reviewed</h2>
+      <p>Our gear faces the internet.</p>
+      <p class="fake-button">View Posts</p>
+    </div>
+  </a>
+</div>
+
+<div class="container">
+  <div class="outdoorsmans-articles">
+  {% assign blog_handles = "news,rifle-scopes,binoculars,spotting-scopes,hunting-packs,tripods" | split: "," %}
+    {% for handle in blog_handles %}
+      {% for article in blogs[handle].articles limit: 6  %}
+    		<div class="outdoorsmans-article">
+            <a href="{{ article.url }}"><img src="{{ article.image.src | img_url: '400x' }}"></a>
+            <div class="outdoorsmans-article-copy">
+             <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
+             {%- if article.excerpt == blank -%}
+                <p>{{ article.content | strip_html | truncatewords: 40 }}</p>
+              {%- else -%}
+                {{ article.excerpt }}
+              {%- endif -%}
+            </div>
+          </div>
+    		{% if article.tags contains blog_tag %}
+          {% assign article_handles = article_handles | append: article.handle | append: "," %}
+        {%endif%}
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,455 @@
+{{ 'stud-search.scss.css' | asset_url | stylesheet_tag }}
+
+<div class="stud-adapter-search">
+
+    <div class="autocomplete">
+      <input style="margin-top: 20px;" id="myInput" onkeyup="myFunction()" placeholder="Search for your binocular: Ex - Swarovski SLC 15x56 " type="text" />
+	</div>
+  
+</div>
+
+<table id="sizing-chart-table" style="width: 100%;">
+	<thead>
+		<tr>
+			<th class="text-align-left">Stud Model</th>
+			<th class="text-align-left">Compatibility&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="text-align-left">
+              <img src="https://cdn.shopify.com/s/files/1/0799/0299/files/universal.jpg?v=1594251003"/>
+              <a href="https://outdoorsmans.com/collections/studs-adapters/products/outdoorsmans-universal-binocular-stud">Small Binocular Stud</a><br />
+			Fits any binocular that has a 1/4x20 threaded housing between the objective lenses.
+            <input type="button" value="Add to cart" onClick="addStudToCart( {{ all_products['outdoorsmans-universal-binocular-stud'].variants.first.id }}  )" class="stud_add_to_cart">
+          </td>
+			<td class="text-align-left">
+          		{% if shop.metafields.custom_fields["stud_universal"] != blank %}
+                  {{ shop.metafields.custom_fields["stud_universal"] }}
+                {% endif %}
+            </td>
+		</tr>
+		<tr>
+			<td>
+              <img src="https://cdn.shopify.com/s/files/1/0799/0299/files/swarovski-stud.jpg?v=1594252327" />
+              <a href="https://outdoorsmans.com/collections/studs-adapters/products/outdoorsmans-swarovski-binocular-stud-2">Large Binocular Stud</a><br />
+			Made for Swarovski SLCs with the exception of 8x30
+              <input type="button" value="Add to cart" onClick="addStudToCart( {{ all_products['outdoorsmans-swarovski-binocular-stud-2'].variants.first.id }}  )" class="stud_add_to_cart">
+          </td>
+                      
+			<td>
+              {% if shop.metafields.custom_fields["stud_swarovski"] != blank %}
+                {{ shop.metafields.custom_fields["stud_swarovski"] }}
+              {% endif %}
+            </td>
+		</tr>
+		<tr>
+			<td>
+              <img src="https://cdn.shopify.com/s/files/1/0799/0299/files/euro.jpg?v=1594311619" />
+              <a href="https://outdoorsmans.com/collections/studs-adapters/products/outdoorsmans-euro-stud">Euro Stud</a><br />
+			Designed for the Meopta and other similar styles of European Optics.
+                                    <input type="button" value="Add to cart" onClick="addStudToCart( {{ all_products['outdoorsmans-euro-stud'].variants.first.id }}  )" class="stud_add_to_cart">
+          </td>
+
+			<td>
+              {% if shop.metafields.custom_fields["stud_euro"] != blank %}
+                {{ shop.metafields.custom_fields["stud_euro"] }}
+              {% endif %}
+            </td>
+		</tr>
+		<tr>
+			<td>
+              <img src="https://cdn.shopify.com/s/files/1/0799/0299/files/leica-ultravid.jpg?v=1594311693" />
+              <a href="https://outdoorsmans.com/collections/studs-adapters/products/outdoorsmans-leica-ultravid-binocular-stud">Leica UltraVid Binocular Stud</a>
+              <input type="button" value="Add to cart" onClick="addStudToCart( {{ all_products['outdoorsmans-leica-ultravid-binocular-stud'].variants.first.id }}  )" class="stud_add_to_cart">
+            </td>
+			<td>
+              {% comment %}Note the Typo in Leica {% endcomment %}
+              {% if shop.metafields.custom_fields["stud_lieca_ultravid"] != blank %}
+                {{ shop.metafields.custom_fields["stud_lieca_ultravid"] }}
+              {% endif %}
+            </td>
+		</tr>
+		<tr>
+			<td>
+              <img src="https://cdn.shopify.com/s/files/1/0799/0299/files/leica-trino.jpg?v=1594311747" />
+              <a href="https://outdoorsmans.com/collections/studs-adapters/products/outdoorsmans-leica-trinovidduovid-binocular-stud">Leica Trinovid/Duovid Binocular Stud</a><br />
+			Fits most models of Trinovid and Duovid; please call the shop for assistance.
+                          <input type="button" value="Add to cart" onClick="addStudToCart( {{ all_products['outdoorsmans-leica-trinovidduovid-binocular-stud'].variants.first.id }}  )" class="stud_add_to_cart">
+          </td>
+			<td>
+              {% if shop.metafields.custom_fields["stud_leica_trinovid"] != blank %}
+                {{ shop.metafields.custom_fields["stud_leica_trinovid"] }}
+              {% endif %}
+          	</td>
+		</tr>
+		<tr>
+			<td>
+              <img src="https://cdn.shopify.com/s/files/1/0799/0299/files/zeiss-rf.jpg?v=1594311869" />
+              <a href="https://outdoorsmans.com/collections/studs-adapters/products/zeiss-rf-binocular-stud">Zeiss RF Stud</a>
+                                        <input type="button" value="Add to cart" onClick="addStudToCart( {{ all_products['zeiss-rf-binocular-stud'].variants.first.id }}  )" class="stud_add_to_cart">
+          	</td>
+			<td>
+              {% if shop.metafields.custom_fields["stud_zeiss_rf"] != blank %}
+                {{ shop.metafields.custom_fields["stud_zeiss_rf"] }}
+              {% endif %}
+            </td>
+		</tr>
+
+        <tr>
+			<td>
+              <img src="https://cdn.shopify.com/s/files/1/0799/0299/products/NL-Stud_695x522.jpg?v=1619825118" />
+              <a href="https://outdoorsmans.com/products/outdoorsmans-nl-pure-stud">NL Pure Stud</a>
+              <input type="button" value="Add to cart" onClick="addStudToCart( {{ all_products['outdoorsmans-nl-pure-stud'].variants.first.id }}  )" class="stud_add_to_cart">
+          	</td>
+			<td>
+              {% if shop.metafields.custom_fields["nl_pure_stud"] != blank %}
+                {{ shop.metafields.custom_fields["nl_pure_stud"] }}
+              {% endif %}
+            </td>
+		</tr>
+
+      
+        <tr>
+			<td>
+              <img src="https://cdn.shopify.com/s/files/1/0799/0299/files/bino-hand.jpg?v=1594311888" />
+              <a href="https://outdoorsmans.com/products/bino-hand">Bino Hand</a>
+               <input type="button" value="Add to cart" onClick="addStudToCart( {{ all_products['zeiss-rf-binocular-stud'].variants.first.id }}  )" class="stud_add_to_cart">
+          	</td>
+			<td>
+              {% if shop.metafields.custom_fields["bino_hand"] != blank %}
+                {{ shop.metafields.custom_fields["bino_hand"] }}
+              {% endif %}
+            </td>
+		</tr>
+        <tr>
+			<td>
+              <img src="https://cdn.shopify.com/s/files/1/0799/0299/files/ring-adapter.jpg?v=1594311907" />
+              <a href="https://outdoorsmans.com/search?type=article%2Cpage%2Cproduct&q=outdoorsmans+ring+adapter">Ring Adapter</a>
+               
+          	</td>
+			<td>
+              {% if shop.metafields.custom_fields["ring_adapter"] != blank %}
+                {{ shop.metafields.custom_fields["ring_adapter"] }}
+              {% endif %}
+            </td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+
+
+
+
+<script>
+  function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("sizing-chart-table");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        document.getElementById("sizing-chart-table").style.display = "table";
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          txtValue.bold();
+          tr[i].style.display = "table-row";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }       
+    }
+  }
+
+  var addStudToCart = function(variantID){
+    var id = variantID;
+    $.ajax({
+        type: 'POST', 
+        url: '/cart/add.js',
+        dataType: 'json', 
+        data: {id:id,quantity:1},
+        success: function(){
+              location.href="/cart";
+        }
+     });
+  }
+  
+	var binoculars = [
+      "Bushnell Forge 8x42",
+      "Bushnell Forge 10x42",
+      "Bushnell Forge 15x56",
+      "Bushnell Engage 8x42",
+      "Bushnell Engage 10x42",
+      "Bushnell Engage 10x50",
+      "Bushnell Engage 12x50",
+      "Bushnell Engage X 8x42",
+      "Bushnell Engage X 10x42",
+      "Bushnell Engage X 10x50",
+      "Bushnell Engage X 12x50",
+      "GPO Passion 8x56",
+      "GPO Passion 10x56",
+      "GPO Passion ED 8x42",
+      "GPO Passion ED 10x42",
+      "GPO Passion HD 8x42",
+      "GPO Passion HD 10x42",
+      "GPO Passion HD 8.5x50",
+      "GPO Passion HD 10x50",
+      "GPO Passion HD 12x50",
+      "Leupold BX-2 Tioga HD 8x42",
+      "Leupold BX-2 Tioga HD 10x42",
+      "Leupold BX-2 Tioga HD 10x50",
+      "Leupold BX-2 Tioga HD 12x50",
+      "Leupold BX-3 Mojave 8x42",
+      "Leupold BX-3 Mojave 10x42",
+      "Leupold BX-3 Mojave 10x50",
+      "Leupold BX-3 Mojave 12x50",
+      "Leupold BX-3 Mojave Pro Guide HD 8x42",
+      "Leupold BX-3 Mojave Pro Guide HD 10x42",
+      "Leupold BX-3 Mojave Pro Guide HD 10x50",
+      "Leupold BX-3 Mojave Pro Guide HD 12x50",
+      "Leupold BX-5 Santiam HD 8x42",
+      "Leupold BX-5 Santiam HD 10x42",
+      "Leupold BX-5 Santiam HD 12x50",
+      "Leupold BX-5 Santiam HD 15x56",
+      "Leupold BX-4 Pro Guide HD 8x42",
+      "Leupold BX-4 Pro Guide HD 10x42",
+      "Leupold BX-4 Pro Guide HD 10x50",
+      "Leupold BX-4 Pro Guide HD 12x50",
+      "Maven B.1 8x42",
+      "Maven B.1 10x42",
+      "Maven B.2 7x45",
+      "Maven B.2 9x45",
+      "Maven B.2 11x45",
+      "Maven B.4 10x56",
+      "Maven B.4 12x56",
+      "Maven B.4 15x56",
+      "Maven B.5 15x56",
+      "Maven B.5 18x56",
+      "Maven C.1 8x42",
+      "Maven C.1 10x42",
+      "Maven C.1 12x42",
+      "Maven C.3 10x50",
+      "Maven C.3 12x50",
+      "Nikon Prostaff 3S 8x42",
+      "Nikon Prostaff 3S 10x42",
+      "Nikon Prostaff 5 10x50",
+      "Nikon Prostaff 5 12x50",
+      "Nikon Prostaff 7(S) 8x42",
+      "Nikon Prostaff 7(S) 10x42",
+      "Nikon Monarch ATB 8x42",
+      "Nikon Monarch ATB 10x42",
+      "Nikon Monarch ATB 12x42",
+      "Nikon Monarch ATB 8.5x56",
+      "Nikon Monarch ATB 10x56",
+      "Nikon Monarch ATB 12x56",
+      "Nikon Monarch 3 8x42",
+      "Nikon Monarch 3 10x42",
+      "Nikon Monarch 5 8x42",
+      "Nikon Monarch 5 10x42",
+      "Nikon Monarch 5 12x42",
+      "Nikon Monarch 5 8x56",
+      "Nikon Monarch 5 16x56",
+      "Nikon Monarch 5 20x56",
+      "Nikon Monarch 7 8x42",
+      "Nikon Monarch 7 10x42",
+      "Nikon Monarch HG 8x42",
+      "Nikon Monarch HG 10x42",
+      "Nikon Monarch X 8.5x45",
+      "Nikon Monarch X 10.5x45",
+      "Vortex Viper HD 8x42",
+      "Vortex Viper HD 10x42",
+      "Vortex Viper HD 10x50",
+      "Vortex Viper HD 12x50",
+      "Vortex Diamondback HD 8x42",
+      "Vortex Diamondback HD 10x42",
+      "Vortex Diamondback HD 10x50",
+      "Vortex Diamondback HD 12x50",
+      "Vortex Diamondback HD 15x56",
+      "Vortex Vulture HD 15x56",
+      "Vortex Fury HD 5000 10x42",
+      "Zeiss Conquest HD 8x32",
+      "Zeiss Conquest HD 10x32",
+      "Zeiss Conquest HD 8x42",
+      "Zeiss Conquest HD 10x42",
+      "Zeiss Conquest HD 8x56",
+      "Zeiss Conquest HD 10x56",
+      "Zeiss Conquest HD 15x56",
+      "Sig Sauer Zulu5 HD 10x42",
+      "Sig Sauer Zulu5 HD 12x42",
+      "Sig Sauer Zulu5 HD 12x50",
+      "Sig Sauer Zulu7 HDX 8x42",
+      "Sig Sauer Zulu7 HDX 10x42",
+      "Sig Sauer Zulu7 HDX 12x50",
+      "Sig Sauer Zulu9 HDX 9x45",
+      "Sig Sauer Zulu9 HDX 11x45",
+      "Sig Sauer Zulu9 HDX 15x56",
+      "Sig Sauer Kilo 3000 10x42",
+      "Swarovski SLC 8x42",
+      "Swarovski SLC 10x42",
+      "Swarovski SLC 8x56",
+      "Swarovski SLC 10x56",
+      "Swarovski SLC 15x56",
+      "Vortex Razor 8x42",
+      "Vortex Razor 10x42",
+      "Vortex Razor 10x50",
+      "Vortex Razor 12x50",
+      "Vortex Razor UHD 8x42",
+      "Vortex Razor UHD 10x42",
+      "Vortex Razor UHD 12x50",
+      "Vortex Razor UHD 18x56",
+      "Vortex Kaibab 15x56",
+      "Vortex Kaibab 18x56",
+      "Vortex Kaibab 20x56",
+      "Meopta MeoStar B.1 8x42",
+      "Meopta MeoStar B.1 10x42",
+      "Meopta MeoStar B.1 7x50",
+      "Meopta MeoStar B.1 10x50",
+      "Meopta MeoStar B.1 12x50",
+      "Meopta MeoStar B.1 8x56",
+      "Meopta MeoStar B.1 15x56",
+      "Meopta MeoPro HD 8x42",
+      "Meopta MeoPro HD 10x42",
+      "Meopta MeoPro HD 8x56",
+      "Meopta Optika HD 8x42",
+      "Meopta Optika HD 10x42",
+      "Cabelas Instinct Euro HD 10x42",
+      "Cabelas Instinct Euro HD 12x50",
+      "Cabelas Instinct Euro HD 15x56",
+      "Leica Duovid 8-12x42",
+      "Leica Duovid 10-15x50",
+      "Leica Trinovid BA 7x42",
+      "Leica Trinovid BA 8x42",
+      "Leica Trinovid BA 10x42",
+      "Leica Trinovid BA 8x50",
+      "Leica Trinovid BA 10x50",
+      "Leica Trinovid BA 12x50",
+      "Leica Trinovid BN 7x42",
+      "Leica Trinovid BN 8x42",
+      "Leica Trinovid BN 10x42",
+      "Leica Trinovid BN 8x50",
+      "Leica Trinovid BN 10x50",
+      "Leica Trinovid BN 12x50",
+      "Zeiss Victory RF 8x42",
+      "Zeiss Victory RF 10x42",
+      "Zeiss Victory RF 8x54",
+      "Zeiss Victory RF 10x54",
+      "Leica Geovid R 8x42",
+      "Leica Geovid R 10x42",
+      "Leica Geovid R 15x56",
+      "Leica Geovid HD-R 2700 8x42",
+      "Leica Geovid HD-R 2700 10x42",
+      "Leica Geovid HD-B 3000 8x42",
+      "Leica Geovid HD-B 3000 10x42",
+      "Leica Geovid 3200.com 8x42",
+      "Leica Geovid 3200.com 10x42 ",
+      "Leica Geovid R 8x42",
+      "Leica Geovid R 10x42",
+      "Leica Geovid R 15x56",
+      "Zeiss Victory RF 8x45",
+      "Zeiss Victory RF 10x45"
+    ]
+  
+    
+    function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+              b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+      x[i].parentNode.removeChild(x[i]);
+    }
+  }
+}
+/*execute a function when someone clicks in the document:*/
+document.addEventListener("click", function (e) {
+    closeAllLists(e.target);
+});
+}
+  
+  autocomplete(document.getElementById("myInput"), binoculars);
+</script>
