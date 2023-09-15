@@ -104,7 +104,7 @@
             
             
           {% if product.metafields.custom_fields["american_made"] == 1 %}
-            <img class="american-made-icon" src="https://cdn.shopify.com/s/files/1/0799/0299/files/made-in-america.svg?v=1612994687">
+            <img alt="American Made" class="american-made-icon" src="https://cdn.shopify.com/s/files/1/0799/0299/files/made-in-america.svg?v=1612994687">
             <p class="american-made">American Made</p>
           {% endif %}
             
@@ -289,6 +289,7 @@
         </div>
       </div>
     {% endif %}
+
     
     {% if product.metafields.custom_fields["technical"] != blank %}
     <div id="technical" class="UM-tabcontent">
@@ -303,6 +304,7 @@
     </div>
     {% endif %}
     
+    
     {% if product.metafields.custom_fields["our_take"] != blank %}
     <div id="ourTake" class="UM-tabcontent">
       <div class="custom-field custom-field__technical custom-field__type--html">
@@ -316,12 +318,12 @@
     <div id="productVideo" class="UM-tabcontent">
       <div class="custom-field custom-field__technical custom-field__type--html">
         <div class="custom-field--value">
-          <div class="embed-container" style="width: 100%;"><iframe style="width: 100%; min-height: 299px;" src="{{ product.metafields.custom_fields["product_video"] }}" frameborder="0" allowfullscreen=""></iframe></div>
+          <div class="embed-container" style="width: 100%;"><iframe title="Embedded Video Player" style="width: 100%; min-height: 299px;" src="{{ product.metafields.custom_fields["product_video"] }}" frameborder="0" allowfullscreen=""></iframe></div>
         </div>
         {% if product.metafields.custom_fields["product_video_ii"] != blank %}
 
           <div class="custom-field--value" style="margin-top: 25px;">
-            <div class="embed-container" style="width: 100%;"><iframe style="width: 100%; min-height: 299px;" src="{{ product.metafields.custom_fields["product_video_ii"] }}" frameborder="0" allowfullscreen=""></iframe></div>
+            <div class="embed-container" style="width: 100%;"><iframe title="Embedded Video Player" style="width: 100%; min-height: 299px;" src="{{ product.metafields.custom_fields["product_video_ii"] }}" frameborder="0" allowfullscreen=""></iframe></div>
           </div>
 
       {% endif %}
@@ -361,13 +363,13 @@
     <div class="product-warranty-info" style="margin-top: 25px;">
       <div class="badges">
 		{% if product.metafields.custom_fields["60-days"] == 1  %}
-        <a href="https://outdoorsmans.com/pages/returns-exchanges-and-warranties"><img class="trust-badges" src="https://cdn.shopify.com/s/files/1/0799/0299/files/icon-money-back.svg?v=1614713311"></a>
+        <a href="https://outdoorsmans.com/pages/returns-exchanges-and-warranties"><img class="trust-badges" alt="60 Days Money Back Guarantee" src="https://cdn.shopify.com/s/files/1/0799/0299/files/icon-money-back.svg?v=1614713311"></a>
         {% endif %}        
         {% if product.metafields.custom_fields["lifetime"] == 1  %}
-            <a href="https://outdoorsmans.com/pages/returns-exchanges-and-warranties"><img class="trust-badges" src="https://cdn.shopify.com/s/files/1/0799/0299/files/icon-warranty.svg?v=1614713311"></a>
+            <a href="https://outdoorsmans.com/pages/returns-exchanges-and-warranties"><img class="trust-badges" alt="Lifetime Limited Warranty" src="https://cdn.shopify.com/s/files/1/0799/0299/files/icon-warranty.svg?v=1614713311"></a>
         {% endif %}
         {% if product.metafields.custom_fields["american_made"] == 1 %}
-            <a href="https://outdoorsmans.com/pages/returns-exchanges-and-warranties"><img class="trust-badges" src="https://cdn.shopify.com/s/files/1/0799/0299/files/icon-american.svg?v=1614713311"></a>
+            <a href="https://outdoorsmans.com/pages/returns-exchanges-and-warranties"><img class="trust-badges" alt="100% American Made" src="https://cdn.shopify.com/s/files/1/0799/0299/files/icon-american.svg?v=1614713311"></a>
         {% endif %}
       </div>
       <div class="od-contact">

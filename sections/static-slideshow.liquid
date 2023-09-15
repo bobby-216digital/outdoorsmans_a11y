@@ -57,6 +57,7 @@
               slideshow-background-link
               slideshow-height-{{ section.settings.slideshow_height }}
             "
+            title="Shop and Get {{ block.settings.title | escape }}"
             href="{{ block.settings.link }}"
             tabindex="-1"
           ></a>
@@ -106,7 +107,7 @@
             <img
               class="slideshow-image"
               src="{{ placeholder_slide_image | strip }}"
-              alt=""
+              alt="{{ placeholder_slide_image.alt | escape }}"
             >
           {% endif %}
 

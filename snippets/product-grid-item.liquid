@@ -153,14 +153,13 @@
           >
             {% for swatch_value in swatch_values %}
               {% assign swatch_value_downcased = swatch_value | downcase %}
-              <label>
                 <input
+                  title="Select {{ product.title | escape }} - {{ swatch_value | escape }}"
                   class="productitem--swatches-input"
                   type="radio"
                   tabindex="0"
                   name="swatch"
                   value="{{ swatch_value | escape }}"
-                  aria-label="{{ swatch_value | escape }}"
                   {% if swatch_value_downcased == active_swatch_name %}checked{% endif %}
                 >
                 {% assign use_variant_images = false %}
@@ -199,7 +198,6 @@
                     </div>
                   </div>
                 </div>
-              </label>
             {% endfor %}
           </form>
           <button
@@ -227,6 +225,7 @@
   <div class="productitem" data-product-item-content>
     {{ recently_viewed_header }}
     <a
+      title="{{ product.title | escape }}"
       class="productitem--image-link"
       href="{{ product.url | within: collection }}"
       tabindex="-1"

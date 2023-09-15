@@ -55,7 +55,7 @@
         "
         type="button"
         tab-index="0"
-        aria-label="{{ media.alt }} {{ 'general.accessibility.nav_product_thumbnail' | t }}"
+        aria-label="{{ media.alt | escape }} {{ 'general.accessibility.nav_product_thumbnail' | t }}"
         data-gallery-thumbnail
         data-gallery-index="{{ forloop.index0 }}"
         data-gallery-selected="{%- if selected_media.id == media.id -%}true{%- else -%}false{%- endif -%}"

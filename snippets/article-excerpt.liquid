@@ -78,8 +78,8 @@
         </div>
       {%- endif -%}
 
-      <a class="article--excerpt-readmore" href="{{ article.url }}" aria-label="read {{ article.title }}">
-        {{ 'blog.general.read_more' | t }}
+      <a class="article--excerpt-readmore" href="{{ article.url }}">
+        {{ 'blog.general.read_more' | t }} <span class="visually-hidden">{{ article.title | escape }}</span>
 
         <span class="article--excerpt-readmore--icon">
           {% render 'icon-library', id: 'icon-signpost-arrow' %}

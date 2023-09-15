@@ -40,6 +40,7 @@
       ">
       {% if section.settings.announcement_link != blank %}
         <a
+          title="{{ section.settings.announcement_text | escape }}"
           class="announcement-bar-link"
           href="{{ section.settings.announcement_link }}"
           ></a>

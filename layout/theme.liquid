@@ -178,15 +178,18 @@ window.hj('identify', userId, {
 
 {% include 'analyzify-gtm-body' %}
 
+<style>
+#customer_register_link, [data-login-toggle] {
+  text-decoration: underline !important;
+}
+</style>
 
-{% render 'digismoothie-giftbox' %}
 </head>
-
 
   <body class="template-{{ template.name }}" data-instant-allow-query-string {% if settings.reduce_animations %}data-reduce-animations{% endif %}>
     <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTTWWHW"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     <script>
       document.documentElement.className=document.documentElement.className.replace(/\bno-js\b/,'js');
@@ -218,7 +221,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {% comment %}
       Below are various templates used in JavaScript
     {% endcomment %}
-    <div style="display: none;" aria-hidden="true" data-templates>
+    <div style="display: none;" data-templates>
       {% comment %}Inject message-banner begin{% endcomment %}
       <div
         class="message-banner--container"
@@ -257,7 +260,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   {{ 'image' | placeholder_svg_tag: 'placeholder--image' }}
                 </div>
                 <div class="atc--product-details">
-                  <h2 class="atc--product-details--title" data-atc-banner-product-title></h2>
+                  <div class="atc--product-details--title" data-atc-banner-product-title></div>
                   <span class="atc--product-details--options" data-atc-banner-product-options></span>
                   <span class="atc--product-details--price">
                     <span class="atc--product-details--price-quantity" data-atc-banner-product-price-quantity></span>
@@ -524,5 +527,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!--end-bc-sf-filter-js-->
 {% render 'wholesale-now', customer: customer, template: template, product: product, cart: cart %}
       {% render 'preorder-now' %}
+
+
+  <!-- 216 a11y -->
+  <script>
+  setTimeout(() => {
+    let jdgmHidden = document.querySelectorAll(".jdgm-random-link");
+    if (jdgmHidden) {
+      for (let i = 0; i < jdgmHidden.length; i++) {
+        jdgmHidden[i].setAttribute("title", "JudgeMe Hidden Link")
+      }
+    }
+  }, 750);
+    
+  </script>
   </body>
 </html>
